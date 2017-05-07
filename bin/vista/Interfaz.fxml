@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.canvas.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -7,7 +8,10 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Graficacion">
    <children>
-      <AnchorPane fx:id="pantalla" layoutX="34.0" layoutY="37.0" prefHeight="344.0" prefWidth="651.0" styleClass="dibujo" />
+      <AnchorPane fx:id="pantalla" layoutX="34.0" layoutY="37.0" prefHeight="344.0" prefWidth="651.0" styleClass="dibujo">
+         <children>
+            <Canvas id="lienzo" fx:id="lienzo" height="317.0" layoutX="15.0" layoutY="7.0" width="622.0" />
+         </children></AnchorPane>
       <AnchorPane fx:id="lineaControl" layoutX="25.0" layoutY="392.0" prefHeight="150.0" prefWidth="150.0">
          <children>
             <TextField id="p1" fx:id="lp1" layoutX="63.0" layoutY="44.0" prefHeight="23.0" prefWidth="77.0" />

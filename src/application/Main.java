@@ -1,7 +1,7 @@
 package application;
 	
-import java.awt.Point;
-import java.util.ArrayList;
+//import java.awt.Point;
+//import java.util.ArrayList;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -32,10 +32,11 @@ public class Main extends Application {
 		launch(args);
 	}
 	
-	public static void pintarLinea(Line a){
+	/*public static void pintarLinea(Line a){
 		ArrayList<Point> ar =a.bresenham();
-		
-		
-		
-	}
+		for(Point po: ar){
+			// (po.getX(),po.getY())
+		}
+	}*/
+	
 }
