@@ -16,6 +16,12 @@ public final class Circumference extends Primitive2D{
 		r = 0;
 	}
 	
+	public Circumference(int cx, int cy, int radio){
+		h = cx;
+		k = cy;
+		r = radio;
+	}
+	
 	public Circumference(int cx, int cy, int radio, String th, String tipo, Color col){
 		super(th, tipo, col);
 		h = cx;
