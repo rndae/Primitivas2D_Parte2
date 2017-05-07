@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 
 public class Graficacion {
 	/*@FXML private Point lp1, lp2;
-	
+	//
 	@FXML private Point centro;
 	@FXML private int radio;
 	
