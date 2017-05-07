@@ -1,8 +1,12 @@
 package application;
 	
+import java.awt.Point;
+import java.util.ArrayList;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import modelo.Line;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -28,7 +32,10 @@ public class Main extends Application {
 		launch(args);
 	}
 	
-	public static void pintarLinea(){
-		//pinta la linea
+	public static void pintarLinea(Line a){
+		ArrayList<Point> ar =a.bresenham();
+		
+		
+		
 	}
 }

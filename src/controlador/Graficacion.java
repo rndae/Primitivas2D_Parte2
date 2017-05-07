@@ -5,9 +5,11 @@ import java.awt.Point;
 import application.*;
 
 import application.Main;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import modelo.Line;
 
 public class Graficacion {
 	/*@FXML private Point lp1, lp2;
@@ -38,8 +40,13 @@ public class Graficacion {
 		
 	}
 	
-	@FXML private void Dibujar(){
+	@FXML private void dibujar(ActionEvent event){
 		if(lp1!=null && lp2!=null)
-			Main.pintarLinea();
+			Main.pintarLinea(new Line(new Point(0, 5),new Point(0, 20)));
+		System.out.print("Dibuja");
+	}
+	
+	@FXML private void rellenar(ActionEvent event){		
+		System.out.print("Rellena");
 	}
 }

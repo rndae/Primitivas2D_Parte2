@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Graficacion">
    <children>
-      <AnchorPane fx:id="pantalla" layoutX="34.0" styleClass="dibujo" layoutY="37.0" prefHeight="344.0" prefWidth="651.0" />
+      <AnchorPane fx:id="pantalla" layoutX="34.0" layoutY="37.0" prefHeight="344.0" prefWidth="651.0" styleClass="dibujo" />
       <AnchorPane fx:id="lineaControl" layoutX="25.0" layoutY="392.0" prefHeight="150.0" prefWidth="150.0">
          <children>
             <TextField id="p1" fx:id="lp1" layoutX="63.0" layoutY="44.0" prefHeight="23.0" prefWidth="77.0" />
@@ -46,8 +46,8 @@
             <Label layoutY="10.0" text="Cuadrado:" />
          </children>
       </AnchorPane>
-      <Button fx:id="botonDibujar" layoutX="401.0" layoutY="542.0" mnemonicParsing="false" text="Dibujar" />
-      <Button fx:id="botonRellenar" layoutX="765.0" layoutY="107.0" mnemonicParsing="false" text="Rellenar" />
+      <Button fx:id="botonDibujar" layoutX="401.0" layoutY="542.0" mnemonicParsing="false" onAction="#dibujar" text="Dibujar" />
+      <Button fx:id="botonRellenar" layoutX="765.0" layoutY="107.0" mnemonicParsing="false" onAction="#rellenar" text="Rellenar" />
       <TextField fx:id="colorR" layoutX="767.0" layoutY="147.0" prefHeight="17.0" prefWidth="55.0" />
       <TextField fx:id="colorG" layoutX="767.0" layoutY="184.0" prefHeight="17.0" prefWidth="55.0" />
       <TextField fx:id="colorB" layoutX="767.0" layoutY="224.0" prefHeight="17.0" prefWidth="55.0" />

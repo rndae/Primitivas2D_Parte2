@@ -12,6 +12,6 @@ public class LineaControl {
 	private Point p2;
 	@FXML
 	private void pintarLinea(){
-		Main.pintarLinea();
+		//Main.pintarLinea();
 	}
 }
