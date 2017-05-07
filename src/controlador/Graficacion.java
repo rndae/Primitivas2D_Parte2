@@ -1,9 +1,8 @@
 package controlador;
 
+
 import java.awt.Point;
 import java.util.ArrayList;
-
-import application.*;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,7 +11,13 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import modelo.*;
+import javafx.scene.paint.Color;
+import modelo.Circumference;
+import modelo.Cuadrado;
+import modelo.FloodFill;
+import modelo.Line;
+import modelo.Poligono;
+import modelo.Triangulo;
 
 public class Graficacion {
 	/*@FXML private Point lp1, lp2;
@@ -71,7 +76,10 @@ public class Graficacion {
 		System.out.print("Dibuja");
 	}
 	
-	@FXML private void rellenar(ActionEvent event){		
+	@FXML private void rellenar(ActionEvent event) throws Exception{		
+		FloodFill floodfill = new FloodFill();
+		//floodfill.floodFill4(Color.BLUE,lienzo,20,20);
+		
 		System.out.print("Rellena");
 	}
 	
@@ -128,6 +136,8 @@ public class Graficacion {
 		int lon = Integer.parseInt(largo.getText());		
 		return new Cuadrado(new Point(Integer.parseInt(a[0]),Integer.parseInt(a[1])), lon);
 	}
+	
+	
 	
 	//gc.setFill(Color.BLACK);  color de trazo 
 }
