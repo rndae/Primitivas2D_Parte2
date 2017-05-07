@@ -13,9 +13,9 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.shape.Line;
+//import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
-//import modelo.Line;
+import modelo.*;
 
 public class Graficacion {
 	/*@FXML private Point lp1, lp2;
@@ -53,8 +53,10 @@ public class Graficacion {
 	@FXML private void dibujar(ActionEvent event){
 		GraphicsContext gc = lienzo.getGraphicsContext2D();
 		
-		if(lp1!=null && lp2!=null)
-			pintarLinea(new modelo.Line(new Point(0, 5),new Point(0, 20)));
+		//if(lp1!=null && lp2!=null)
+			pintarLinea(new modelo.Line(new Point(0, 5),new Point(0, 200)), gc);
+			pintarPoligono(new Triangulo(new Point(50, 5),new Point(50, 200), new Point(150, 100)), gc);
+
 		System.out.print("Dibuja");
 	}
 	
@@ -62,14 +64,19 @@ public class Graficacion {
 		System.out.print("Rellena");
 	}
 	
-	private void pintarLinea(modelo.Line a){
-			ArrayList<Point> ar =a.bresenham();
-			Line l;
+	private void pintarLinea(modelo.Line lin, GraphicsContext gc){
+			ArrayList<Point> ar = lin.bresenham();
 			for(Point po: ar){
-				l = new Line(po.getX(), po.getX(),po.getY(),po.getY());
-				//lienzo.
+				gc.fillRect(po.getX(), po.getY(), 1, 1);
 			}		
 	}
+	
+	private void pintarPoligono(Poligono pol, GraphicsContext gc){
+		ArrayList<Line> ar = pol.dibujar();
+		for(Line lin: ar){
+			pintarLinea(lin, gc);
+		}		
+}
 	
 	/*private void doPixel(Graphics g, int x, int y){
     	g.fillRect(x, y, 1, 1);
