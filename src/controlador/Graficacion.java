@@ -49,7 +49,7 @@ public class Graficacion {
 	
 	@FXML private void dibujar(ActionEvent event){
 		GraphicsContext gc = lienzo.getGraphicsContext2D();
-		
+		/*//---prueba
 		if(lp1!=null && lp2!=null)
 			pintarLinea(new modelo.Line(new Point(0, 5),new Point(0, 200)), gc);
 		if(centro!=null && radio!=null)
@@ -58,7 +58,16 @@ public class Graficacion {
 			pintarPoligono(new Triangulo(new Point(50, 5),new Point(50, 200), new Point(150, 100)), gc);
 		if(cp!=null && largo!=null)
 			pintarPoligono(new Cuadrado(new Point(150, 50),250), gc);
-        
+        */
+		if(lp1.getText().length()>0 && lp1.getText().length()>0)
+			pintarLinea(nuevaLinea(), gc);
+		if(centro.getText().length()>0 && radio.getText().length()>0)
+			pintarCircunferencia(nuevaCircunferencia(), gc);
+		if(tp1.getText().length()>0 && tp2.getText().length()>0 && tp3.getText().length()>0)
+			pintarPoligono(nuevoTriangulo(), gc);
+		if(cp.getText().length()>0 && largo.getText().length()>0)
+			pintarPoligono(nuevoCuadrado(), gc);
+		
 		System.out.print("Dibuja");
 	}
 	
