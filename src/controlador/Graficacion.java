@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import modelo.Circumference;
@@ -90,6 +91,12 @@ public class Graficacion {
 				    Color.WHITE, gc, lienzo, imagen, rellenado);
 		gc.drawImage(imagen, 0, 0);
 		System.out.print("Rellena "+veces + " pixeles. ");
+	}
+	
+	@FXML private void seleccion(MouseEvent e){
+		corX.setText(""+(int)e.getX());
+		corY.setText(""+(int)e.getY());
+		System.out.println(e.getX()+" "+e.getY());
 	}
 	
 	private void pintarCircunferencia(Circumference cir, GraphicsContext gc){

@@ -10,7 +10,7 @@
    <children>
       <AnchorPane fx:id="pantalla" layoutX="34.0" layoutY="37.0" prefHeight="344.0" prefWidth="651.0" styleClass="dibujo">
          <children>
-            <Canvas id="lienzo" fx:id="lienzo" height="317.0" layoutX="15.0" layoutY="7.0" width="622.0" />
+            <Canvas id="lienzo" fx:id="lienzo" height="317.0" layoutX="15.0" layoutY="7.0" onMouseClicked="#seleccion" width="622.0" />
          </children></AnchorPane>
       <AnchorPane fx:id="lineaControl" layoutX="25.0" layoutY="392.0" prefHeight="150.0" prefWidth="150.0">
          <children>
