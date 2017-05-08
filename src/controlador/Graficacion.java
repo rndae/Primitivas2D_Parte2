@@ -109,7 +109,7 @@ public class Graficacion {
 	private void pintarPoligono(Poligono pol, GraphicsContext gc){
 		ArrayList<Line> lins = pol.dibujar();
 		for(Line lin: lins){
-			ArrayList<Point> ar = lin.bresenham(); //lin.DDA() ---revisar--
+			ArrayList<Point> ar = lin.DDA();
 			for(Point po: ar){
 				gc.fillRect(po.getX(), po.getY(), 1, 1);
 			}
