@@ -86,7 +86,8 @@ public class Graficacion {
 		GraphicsContext gc = lienzo.getGraphicsContext2D();
 		Color rellenado = Color.rgb(Integer.parseInt(colorR.getText()), 
 				Integer.parseInt(colorG.getText()),Integer.parseInt(colorB.getText()));  
-		int veces = floodfill.fill(150, 120, Color.WHITE, gc, lienzo, imagen, rellenado);
+		int veces = floodfill.fill(Integer.parseInt(corX.getText()), Integer.parseInt(corY.getText()),
+				    Color.WHITE, gc, lienzo, imagen, rellenado);
 		gc.drawImage(imagen, 0, 0);
 		System.out.print("Rellena "+veces + " pixeles. ");
 	}
