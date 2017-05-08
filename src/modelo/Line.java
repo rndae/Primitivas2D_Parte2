@@ -124,9 +124,13 @@ public class Line extends Primitive2D{
 	
 	public ArrayList<Point> DDA(){		//(Point p1,Point p2)
 		ArrayList<Point> list = new ArrayList<Point>();
+		if(p2.x<p1.x){
+			Point aux = p2;
+			p2 = p1;
+			p1 = aux;
+		}
 		int dx = p2.x-p1.x;
-		int dy = p2.y-p1.y;
-		double m = (1.0*dy)/dx;
+		int dy = p2.y-p1.y;		
 		int inc,x,y;
 		x = p1.x;
 		y = p1.y;
@@ -141,7 +145,7 @@ public class Line extends Primitive2D{
 			while(x!=p2.x || y!=p2.y){
 				x = x + inc;
 				if(dx != 0)
-					y = (int) Math.round(p1.y + times*m);
+					y = (int) Math.round(p1.y + times*(1.0*dy)/dx);
 				else 
 					y = p2.y;
 				times++;
@@ -157,7 +161,7 @@ public class Line extends Primitive2D{
 			while(x!=p2.x || y!=p2.y){
 				y = y + inc;
 				if(dy != 0)
-					x = (int) Math.round(p1.x + times*(1/m));
+					x = (int) Math.round(p1.x + times*(1.0*dx)/dy);
 				else
 				    x = p2.x;
 				times++;
