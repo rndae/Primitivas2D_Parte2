@@ -10,6 +10,8 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import modelo.Circumference;
@@ -47,6 +49,8 @@ public class Graficacion {
 	@FXML private Button botonDibujar;
 	
 	@FXML private Button botonRellenar;
+	@FXML private TextField colorR, colorG, colorB ;
+	@FXML private TextField corX, corY;
 	
 	public Graficacion(){
 		
@@ -73,21 +77,25 @@ public class Graficacion {
 		if(cp.getText().length()>0 && largo.getText().length()>0)
 			pintarPoligono(nuevoCuadrado(), gc);
 		
-		System.out.print("Dibuja");
+		System.out.print("Dibuja. ");
 	}
 	
 	@FXML private void rellenar(ActionEvent event) throws Exception{		
 		FloodFill floodfill = new FloodFill();
-		//floodfill.floodFill4(Color.BLUE,lienzo,20,20);
-		
-		System.out.print("Rellena");
+		WritableImage imagen = lienzo.snapshot(null, null);
+		GraphicsContext gc = lienzo.getGraphicsContext2D();
+		Color rellenado = Color.rgb(Integer.parseInt(colorR.getText()), 
+				Integer.parseInt(colorG.getText()),Integer.parseInt(colorB.getText()));  
+		int veces = floodfill.fill(150, 120, Color.WHITE, gc, lienzo, imagen, rellenado);
+		gc.drawImage(imagen, 0, 0);
+		System.out.print("Rellena "+veces + " pixeles. ");
 	}
 	
 	private void pintarCircunferencia(Circumference cir, GraphicsContext gc){
 		ArrayList<Point> ar = cir.bresenham();
 		for(Point po: ar){
 			gc.fillRect(po.getX(), po.getY(), 1, 1);
-		}		
+		}
 	}
 	
 	private void pintarLinea(modelo.Line lin, GraphicsContext gc){

@@ -2,8 +2,13 @@ package modelo;
 
 
 
+import java.awt.Point;
+import java.util.LinkedList;
+import java.util.Queue;
+
 import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritableImage;
@@ -15,34 +20,67 @@ public class FloodFill {
 		
 	}
 	
-	public void floodFill4(Color color,Canvas lienzo,int x, int y) throws Exception{
-		//Image imagen = input.snapshot(null, null);
-		
-		/*ImageInputStream imagenInput = ImageIO.createImageInputStream(input);
-		BufferedImage imagen = ImageIO.read(imagenInput);
-		*/
-		llenar4(color,lienzo,x, y);
-	}
+	//Rellenado sin imagen
+	public int fill(int x, int y, Color color, GraphicsContext gc, Canvas lienzo){
+        Queue<Point> puntos = new LinkedList<Point>();
+        puntos.offer(new Point(x, y));
+        PixelReader pr;
+        Color relleno = Color.INDIGO;
+        int veces = 0;
+        while (puntos.size() > 0){
+            Point p = puntos.poll();
+            //veces++;
+            x = p.x;
+            y = p.y;
+            pr = lienzo.snapshot(null,null).getPixelReader();
+            Color act = pr.getColor(x, y);            
+            if(color.equals(act)){
+            	//gc.fillRect(x, y, 1, 1);
+            	veces++;
+                gc.getPixelWriter().setColor(x,y, relleno);
+                if(color.equals(pr.getColor(x, y-1)))
+                	puntos.offer(new Point(x , y - 1));
+                if(color.equals(pr.getColor(x+1, y)))
+                	puntos.offer(new Point(x + 1, y));
+                if(color.equals(pr.getColor(x, y + 1)))
+                	puntos.offer(new Point(x, y +1));
+                if(color.equals(pr.getColor(x -1, y)))
+                	puntos.offer(new Point(x - 1, y));            	
+            }
+        }
+        return veces;
+    }
 	
-	private void llenar4(Color color, /*BufferedImage*/Canvas lienzo, int x, int y) {
-		if(!pixelPintado(lienzo, x, y)){
-			lienzo.getGraphicsContext2D().getPixelWriter().setColor(x, y, color);
-			llenar4(color,lienzo,x,y-1);
-			llenar4(color,lienzo,x+1,y);
-			llenar4(color,lienzo,x,y+1);
-			llenar4(color,lienzo,x-1,y);
-		}
-	}
-
-		
-	private boolean pixelPintado(/*BufferedImage*/Canvas lienzo, int x, int y){
-		String white="#FFFFFF";
-		int blanco = Integer.parseInt(white);
-		PixelReader pr = lienzo.snapshot(new SnapshotParameters(), null ) .getPixelReader(); 
-		return pr.getColor(x, y).toString().equals("white");
-	}
+	//Rellenado a imagen
+	public int fill(int x, int y, Color color, GraphicsContext gc, Canvas lienzo,
+				WritableImage imagen, Color relleno){
+        Queue<Point> puntos = new LinkedList<Point>();
+        puntos.offer(new Point(x, y));
+        PixelReader pr = imagen.getPixelReader();
+        Color ant = pr.getColor(x, y);
+        if(!ant.equals(relleno))
+        	color = ant;
+        if(relleno == null) relleno = Color.INDIGO;
+        int veces = 0;
+        while (puntos.size() > 0){
+            Point p = puntos.poll();
+            x = p.x;
+            y = p.y;            
+            if(color.equals(pr.getColor(x, y))){
+            	//gc.fillRect(x, y, 1, 1);
+            	veces++;
+                imagen.getPixelWriter().setColor(x,y, relleno);
+                if(color.equals(pr.getColor(x, y-1)))
+                	puntos.offer(new Point(x , y - 1));
+                if(color.equals(pr.getColor(x+1, y)))
+                	puntos.offer(new Point(x + 1, y));
+                if(color.equals(pr.getColor(x, y + 1)))
+                	puntos.offer(new Point(x, y +1));
+                if(color.equals(pr.getColor(x -1, y)))
+                	puntos.offer(new Point(x - 1, y));            	
+            }
+        }
+        return veces;
+    }
 	
-	public void inundacion(Canvas lienzo){
-		
-	}
 }
