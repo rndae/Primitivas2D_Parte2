@@ -75,15 +75,19 @@ public class FloodFill {
             	//gc.fillRect(x, y, 1, 1);
             	veces++;
                 imagen.getPixelWriter().setColor(x,y, relleno);
+                if(dentro(x,y-1,imagen))
                 if(color.equals(pr.getColor(x, y-1))
                    && (y-1 > -1))
                 	puntos.offer(new Point(x , y - 1));
+                if(dentro(x+1,y,imagen))
                 if(color.equals(pr.getColor(x+1, y))
                         && (x+1<imagen.getWidth()+1))
                 	puntos.offer(new Point(x + 1, y));
+                if(dentro(x,y+1,imagen))
                 if(color.equals(pr.getColor(x, y + 1))
                 		&& (y+1 < imagen.getHeight()+1))   
                 	puntos.offer(new Point(x, y +1));
+                if(dentro(x-1,y,imagen))
                 if(color.equals(pr.getColor(x -1, y))
                         && (x-1>-1))
                 	puntos.offer(new Point(x - 1, y));            	
@@ -92,4 +96,7 @@ public class FloodFill {
         return veces;
     }
 	
+	private boolean dentro(int x, int y, Image lienzo){
+        return x>=0 && x<lienzo.getWidth() && y>=0 && y<lienzo.getHeight();
+    }
 }
