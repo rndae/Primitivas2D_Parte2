@@ -39,5 +39,12 @@ public class Poligono {
     	return aristas;
 	}
     	
+    public ArrayList<Point> getVertices() {
+		return vertices;
+	}
+
+	public void setVertices(ArrayList<Point> vertices) {
+		this.vertices = vertices;
+	}
     
 }
