@@ -129,6 +129,11 @@ public class Line extends Primitive2D{
 			p2 = p1;
 			p1 = aux;
 		}
+		if(p2.y<p1.y){
+			Point aux = p2;
+			p2 = p1;
+			p1 = aux;
+		}
 		int dx = p2.x-p1.x;
 		int dy = p2.y-p1.y;		
 		int inc,x,y;
