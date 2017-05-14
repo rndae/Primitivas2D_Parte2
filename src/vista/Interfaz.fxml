@@ -88,7 +88,7 @@
                   <TextField id="tcorY" fx:id="tcorY" layoutX="117.0" layoutY="104.0" prefHeight="25.0" prefWidth="36.0" />
                   <Label layoutX="122.0" layoutY="85.0" text="Y:" />
                   <Label layoutX="16.0" layoutY="108.0" text="Trasladar:" />
-                  <Button fx:id="btnTransformar" layoutX="44.0" layoutY="152.0" mnemonicParsing="false" text="Transformar" />
+                  <Button fx:id="btnTransformar" layoutX="44.0" layoutY="152.0" mnemonicParsing="false" onAction="#transformar" text="Transformar" />
                   <TextField id="escalar" fx:id="escalar" layoutX="85.0" layoutY="58.0" prefHeight="25.0" prefWidth="40.0" />
                </children>
             </AnchorPane>

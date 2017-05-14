@@ -3,6 +3,7 @@ package controlador;
 
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -56,31 +57,46 @@ public class Graficacion{
 	@FXML private Button btnBorrar;
 	
 	//Parte tres, Transformaciones
-	@FXML private ListView lista;
+	@FXML private ListView<String> lista;
 	
 	@FXML private TextField rotar;
 	
 	@FXML private TextField escalar;
-	//@FXML private Slider escalar;
-	//@FXML private Label xEscala;
 	
 	@FXML private TextField tcorX, tcorY;
 	@FXML private Button btnTransformar;
 	
 	ObservableList<String> figsTexto;
-	ArrayList<Grafico> figuras;
+	HashMap<String,Grafico> figuras;
 	
 	
 	public Graficacion(){
 		figsTexto = FXCollections.observableArrayList();
-		figuras = new ArrayList<Grafico>();
+		figuras = new HashMap<String, Grafico>();
 	}
-		
+    
+	@FXML private void transformar(ActionEvent e){
+		String clave = lista.getSelectionModel().getSelectedItem();
+		if(clave != null){
+			Grafico fig = figuras.get(clave);
+			if(rotar.getText().length()>0){
+				//Rota
+			}
+			if(escalar.getText().length()>0){
+				//Escala
+			}
+			if(tcorX.getText().length()>0 && tcorY.getText().length()>0){
+				//Traslada
+			}
+			System.out.println(clave);
+			System.out.println(fig.toString());
+		}
+	}
 	
 	@FXML private void borrar(ActionEvent e){
 		lienzo.getGraphicsContext2D().clearRect(0, 0, lienzo.getWidth(), lienzo.getHeight());
 		figsTexto = FXCollections.observableArrayList();
-		figuras = new ArrayList<Grafico>();
+		figuras = new HashMap<String, Grafico>();
 		lista.setItems(figsTexto);
 		System.out.println("Borra. ");
 	}
@@ -96,22 +112,22 @@ public class Graficacion{
 		if(lp1.getText().length()>0 && lp1.getText().length()>0){
 			modelo.Line lin = pintarLinea(nuevaLinea(), gc);
 			figsTexto.add(lin.toString());
-			figuras.add(lin);
+			figuras.put(lin.toString(), lin);
 			}
 		if(centro.getText().length()>0 && radio.getText().length()>0){
 			Circumference cir = pintarCircunferencia(nuevaCircunferencia(), gc);
 			figsTexto.add(cir.toString());
-			figuras.add(cir);
+			figuras.put(cir.toString(), cir);
 		}
 		if(tp1.getText().length()>0 && tp2.getText().length()>0 && tp3.getText().length()>0){
 			Poligono poli = pintarPoligono(nuevoTriangulo(), gc);			
 			figsTexto.add(poli.toString());
-			figuras.add(poli);
+			figuras.put(poli.toString(),poli);
 		}
 		if(cp.getText().length()>0 && largo.getText().length()>0){
 			Poligono poli = pintarPoligono(nuevoCuadrado(), gc);
 			figsTexto.add(poli.toString());
-			figuras.add(poli);
+			figuras.put(poli.toString(), poli);
 		}
 		System.out.print("Dibuja. ");		
 		lista.setItems(figsTexto);
