@@ -239,5 +239,31 @@ public class Line extends Primitive2D{
 		return ans;
 		
 	}
+
+	@Override
+	public void escalar(Point p, int sx, int sy) {
+		
+		
+	}
+
+	@Override
+	public void rotar(Point p, int deg) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void trasladar(Point a, Point b) {
+		int dx = a.x-b.x;
+		int dy = a.y-b.y;
+		//modificando el punto 1
+		p1.x = p1.x +dx;
+		p1.y = p1.y +dy;
+		//modificando el punto 2
+		p2.x = p2.x +dx;
+		p2.y = p2.y +dy;
+	}
+
+	
 	
 }

@@ -170,5 +170,25 @@ public final class Circumference extends Primitive2D{
 		return ans;
 		
 	}
+
+	@Override
+	public void escalar(Point p, int sx, int sy) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
+	@Override
+	public void rotar(Point p, int deg) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void trasladar(Point a, Point b) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

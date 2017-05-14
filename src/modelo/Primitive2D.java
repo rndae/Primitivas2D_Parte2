@@ -1,11 +1,12 @@
 package modelo;
 
 import java.awt.Color;
+import java.awt.Point;
 /**
  *
  * @author Cristhian
  */
-public class Primitive2D {
+public abstract class Primitive2D implements Grafico{
     private String grosor;
     private String tipo;
     private Color color;
@@ -71,5 +72,10 @@ public class Primitive2D {
     public void setColor(Color color) {
         this.color = color;
     }
+
     
+    public abstract void escalar(Point p, int sx, int sy);
+    public abstract void rotar(Point p, int deg);
+    public abstract void trasladar(Point a,Point b);
+	    
 }
