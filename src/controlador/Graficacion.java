@@ -4,6 +4,8 @@ package controlador;
 import java.awt.Point;
 import java.util.ArrayList;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,6 +15,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
@@ -50,19 +53,29 @@ public class Graficacion{
 	@FXML private TextField corX, corY;
 	@FXML private Button btnBorrar;
 	
-	//Parte tres Transformaciones
+	//Parte tres, Transformaciones
 	@FXML private ListView lista;
 	
+	@FXML private TextField rotar;
+	
+	@FXML private TextField escalar;
+	//@FXML private Slider escalar;
+	//@FXML private Label xEscala;
+	
+	@FXML private TextField tcorX, tcorY;
+	@FXML private Button btnTransformar;
+	
+	ObservableList<String> eles;
 	
 	
-	public Graficacion(){				
+	public Graficacion(){
+		eles = FXCollections.observableArrayList();
 	}
-	
+		
 	
 	@FXML private void borrar(ActionEvent e){
 		lienzo.getGraphicsContext2D().clearRect(0, 0, lienzo.getWidth(), lienzo.getHeight());
 		System.out.println("Borra. ");
-				
 	}
 	
 	@FXML private void dibujar(ActionEvent event){
@@ -73,8 +86,10 @@ public class Graficacion{
 			pintarPoligono(new Triangulo(new Point(50, 5),new Point(50, 200), new Point(150, 100)), gc);		
 			pintarPoligono(new Cuadrado(new Point(150, 50),250), gc);
         */
+		String ele;
 		if(lp1.getText().length()>0 && lp1.getText().length()>0){
-			pintarLinea(nuevaLinea(), gc);
+			ele = pintarLinea(nuevaLinea(), gc).toString();
+			//lista
 			}
 		if(centro.getText().length()>0 && radio.getText().length()>0){
 			pintarCircunferencia(nuevaCircunferencia(), gc);
@@ -88,9 +103,10 @@ public class Graficacion{
 		
 		System.out.print("Dibuja. ");
 		
-		ObservableList<String> eles = FXCollections.observableArrayList(
+		/*eles = FXCollections.observableArrayList(
 				"Cuadrado1","Triangulo1","Circunferencia1","Linea1","Linea2"
-				);
+				);*/
+		eles.add(""+5);
 		lista.setItems(eles);
 	}
 	
@@ -110,7 +126,9 @@ public class Graficacion{
 	@FXML private void seleccion(MouseEvent e){
 		corX.setText(""+(int)e.getX());
 		corY.setText(""+(int)e.getY());
-		System.out.println(e.getX()+" "+e.getY());
+		tcorX.setText(""+(int)e.getX());
+		tcorY.setText(""+(int)e.getY());
+		//System.out.println(e.getX()+" "+e.getY());
 	}
 	
 	private Circumference pintarCircunferencia(Circumference cir, GraphicsContext gc){
@@ -168,6 +186,7 @@ public class Graficacion{
 		String[] a = cp.getText().split(" |,");	
 		int lon = Integer.parseInt(largo.getText());		
 		return new Cuadrado(new Point(Integer.parseInt(a[0]),Integer.parseInt(a[1])), lon);
-	}
+	}	
+
 	
 }

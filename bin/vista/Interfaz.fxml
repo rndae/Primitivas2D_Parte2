@@ -10,7 +10,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="634.0" prefWidth="972.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Graficacion">
+<AnchorPane id="btnTransformar" prefHeight="634.0" prefWidth="972.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Graficacion">
    <children>
       <AnchorPane fx:id="pantalla" layoutX="34.0" layoutY="37.0" prefHeight="389.0" prefWidth="651.0" styleClass="dibujo">
          <children>
@@ -71,14 +71,27 @@
          </children>
       </AnchorPane>
       <Button fx:id="btnBorrar" layoutX="448.0" layoutY="588.0" mnemonicParsing="false" onAction="#borrar" text="Borrar" />
-      <SplitPane dividerPositions="0.5" layoutX="763.0" layoutY="226.0" orientation="VERTICAL" prefHeight="359.0" prefWidth="171.0">
+      <SplitPane dividerPositions="0.46825396825396826" layoutX="763.0" layoutY="226.0" orientation="VERTICAL" prefHeight="380.0" prefWidth="171.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
                   <ListView id="lista" fx:id="lista" layoutY="-24.0" prefHeight="176.0" prefWidth="169.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Label layoutX="26.0" layoutY="18.0" text="Rotar:" />
+                  <TextField id="rotar" fx:id="rotar" layoutX="85.0" layoutY="14.0" prefHeight="25.0" prefWidth="40.0" />
+                  <Label layoutX="26.0" layoutY="62.0" text="Escalar:" />
+                  <Label layoutX="82.0" layoutY="85.0" text="X:" />
+                  <TextField id="tcorX" fx:id="tcorX" layoutX="74.0" layoutY="104.0" prefHeight="25.0" prefWidth="36.0" />
+                  <TextField id="tcorY" fx:id="tcorY" layoutX="117.0" layoutY="104.0" prefHeight="25.0" prefWidth="36.0" />
+                  <Label layoutX="122.0" layoutY="85.0" text="Y:" />
+                  <Label layoutX="16.0" layoutY="108.0" text="Trasladar:" />
+                  <Button fx:id="btnTransformar" layoutX="44.0" layoutY="152.0" mnemonicParsing="false" text="Transformar" />
+                  <TextField id="escalar" fx:id="escalar" layoutX="85.0" layoutY="58.0" prefHeight="25.0" prefWidth="40.0" />
+               </children>
+            </AnchorPane>
         </items>
       </SplitPane>
    </children>
