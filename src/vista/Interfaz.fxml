@@ -1,27 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.canvas.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Graficacion">
    <children>
       <AnchorPane fx:id="pantalla" layoutX="34.0" layoutY="37.0" prefHeight="344.0" prefWidth="651.0" styleClass="dibujo">
          <children>
-            <Canvas id="lienzo" fx:id="lienzo" height="317.0" layoutX="15.0" layoutY="7.0" onMouseClicked="#seleccion" width="622.0" />
+            <Canvas id="lienzo" fx:id="lienzo" height="317.0" layoutX="15.0" layoutY="7.0" onMouseClicked="#seleccion" width="622.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children></AnchorPane>
-      <AnchorPane fx:id="lineaControl" layoutX="25.0" layoutY="392.0" prefHeight="150.0" prefWidth="150.0">
+      <AnchorPane fx:id="lineaControl" layoutX="25.0" layoutY="392.0" prefHeight="150.0" prefWidth="150.0" styleClass="control">
          <children>
             <TextField id="p1" fx:id="lp1" layoutX="63.0" layoutY="44.0" prefHeight="23.0" prefWidth="77.0" />
             <TextField id="p2" fx:id="lp2" layoutX="63.0" layoutY="85.0" prefHeight="23.0" prefWidth="77.0" />
             <Label layoutX="14.0" layoutY="48.0" text="Punto 1" />
             <Label layoutX="14.0" layoutY="89.0" text="Punto 2" />
-            <Label layoutY="6.0" text="Segmento:" />
+            <Label layoutX="7.0" layoutY="6.0" text="Segmento:" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="circunControl" layoutX="234.0" layoutY="392.0" prefHeight="150.0" prefWidth="150.0">
+      <AnchorPane fx:id="circunControl" layoutX="234.0" layoutY="392.0" prefHeight="150.0" prefWidth="150.0" styleClass="control">
          <children>
             <TextField id="p1" fx:id="centro" layoutX="63.0" layoutY="44.0" prefHeight="23.0" prefWidth="77.0" />
             <TextField id="p2" fx:id="radio" layoutX="63.0" layoutY="84.0" prefHeight="23.0" prefWidth="77.0" />
@@ -30,7 +34,7 @@
             <Label layoutX="7.0" layoutY="5.0" text="Circunferencia:" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="trianguloControl" layoutX="439.0" layoutY="392.0" prefHeight="150.0" prefWidth="150.0">
+      <AnchorPane fx:id="trianguloControl" layoutX="439.0" layoutY="392.0" prefHeight="150.0" prefWidth="150.0" styleClass="control">
          <children>
             <TextField id="p1" fx:id="tp1" layoutX="63.0" layoutY="31.0" prefHeight="23.0" prefWidth="77.0" />
             <TextField id="p2" fx:id="tp2" layoutX="63.0" layoutY="63.0" prefHeight="23.0" prefWidth="77.0" />
@@ -38,29 +42,34 @@
             <Label layoutX="13.0" layoutY="35.0" text="Punto 1" />
             <Label layoutX="13.0" layoutY="67.0" text="Punto 2" />
             <Label layoutX="13.0" layoutY="99.0" text="Punto 3" />
-            <Label layoutY="6.0" text="Triangulo:" />
+            <Label layoutX="8.0" layoutY="6.0" text="Triangulo:" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="cuadradoControl" layoutX="681.0" layoutY="392.0" prefHeight="150.0" prefWidth="150.0">
+      <AnchorPane fx:id="cuadradoControl" layoutX="681.0" layoutY="392.0" prefHeight="150.0" prefWidth="150.0" styleClass="control">
          <children>
             <TextField id="p1" fx:id="cp" layoutX="75.0" layoutY="44.0" prefHeight="25.0" prefWidth="60.0" />
             <TextField id="p1" fx:id="largo" layoutX="78.0" layoutY="83.0" prefHeight="25.0" prefWidth="55.0" />
-            <Label layoutY="48.0" text="Punto Base" />
-            <Label layoutX="-5.0" layoutY="87.0" text="Logitud Lado" />
-            <Label layoutY="10.0" text="Cuadrado:" />
+            <Label layoutX="12.0" layoutY="48.0" text="Punto Base" />
+            <Label layoutX="7.0" layoutY="87.0" text="Logitud Lado" />
+            <Label layoutX="14.0" layoutY="6.0" text="Cuadrado:" />
          </children>
       </AnchorPane>
-      <Button fx:id="botonDibujar" layoutX="401.0" layoutY="542.0" mnemonicParsing="false" onAction="#dibujar" text="Dibujar" />
-      <Button fx:id="botonRellenar" layoutX="765.0" layoutY="107.0" mnemonicParsing="false" onAction="#rellenar" text="Rellenar" />
-      <TextField id="colorR" fx:id="colorR" layoutX="767.0" layoutY="147.0" prefHeight="17.0" prefWidth="55.0" text="75" />
-      <TextField id="colorG" fx:id="colorG" layoutX="767.0" layoutY="184.0" prefHeight="17.0" prefWidth="55.0" text="0" />
-      <TextField id="colorB" fx:id="colorB" layoutX="767.0" layoutY="224.0" prefHeight="17.0" prefWidth="55.0" text="130" />
-      <Label layoutX="748.0" layoutY="151.0" text="R:" />
-      <Label layoutX="748.0" layoutY="188.0" text="G:" />
-      <Label layoutX="748.0" layoutY="228.0" text="B:" />
-      <TextField id="corX" fx:id="corX" layoutX="746.0" layoutY="58.0" prefHeight="25.0" prefWidth="42.0" />
-      <Label layoutX="753.0" layoutY="37.0" text="X" />
-      <Label layoutX="809.0" layoutY="37.0" text="Y" />
-      <TextField id="corY" fx:id="corY" layoutX="801.0" layoutY="58.0" prefHeight="25.0" prefWidth="42.0" />
+      <Button fx:id="botonDibujar" layoutX="309.0" layoutY="542.0" mnemonicParsing="false" onAction="#dibujar" text="Dibujar" />
+      <AnchorPane layoutX="729.0" layoutY="37.0" prefHeight="211.0" prefWidth="114.0" styleClass="control">
+         <children>
+            <Button fx:id="botonRellenar" layoutX="19.0" layoutY="70.0" mnemonicParsing="false" onAction="#rellenar" text="Rellenar" />
+            <TextField id="colorG" fx:id="colorG" layoutX="21.0" layoutY="147.0" prefHeight="17.0" prefWidth="55.0" text="0" />
+            <Label layoutX="2.0" layoutY="151.0" text="G:" />
+            <TextField id="colorR" fx:id="colorR" layoutX="21.0" layoutY="110.0" prefHeight="17.0" prefWidth="55.0" text="75" />
+            <Label layoutX="2.0" layoutY="114.0" text="R:" />
+            <Label layoutX="2.0" layoutY="191.0" text="B:" />
+            <Label layoutX="63.0" text="Y:" />
+            <TextField id="corY" fx:id="corY" layoutX="57.0" layoutY="21.0" prefHeight="25.0" prefWidth="42.0" />
+            <TextField id="colorB" fx:id="colorB" layoutX="21.0" layoutY="187.0" prefHeight="17.0" prefWidth="55.0" text="130" />
+            <TextField id="corX" fx:id="corX" layoutX="8.0" layoutY="21.0" prefHeight="25.0" prefWidth="42.0" />
+            <Label layoutX="7.0" text="X:" />
+         </children>
+      </AnchorPane>
+      <Button fx:id="btnBorrar" layoutX="439.0" layoutY="542.0" mnemonicParsing="false" onAction="#borrar" text="Borrar" />
    </children>
 </AnchorPane>

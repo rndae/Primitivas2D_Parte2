@@ -20,6 +20,7 @@ import modelo.Cuadrado;
 import modelo.FloodFill;
 import modelo.Line;
 import modelo.Poligono;
+import modelo.ScanLine;
 import modelo.Triangulo;
 
 public class Graficacion {
@@ -52,9 +53,16 @@ public class Graficacion {
 	@FXML private Button botonRellenar;
 	@FXML private TextField colorR, colorG, colorB ;
 	@FXML private TextField corX, corY;
+	@FXML private Button btnBorrar;
+	
 	
 	public Graficacion(){
 		
+	}
+	
+	@FXML private void borrar(ActionEvent e){
+		lienzo.getGraphicsContext2D().clearRect(0, 0, lienzo.getWidth(), lienzo.getHeight());
+		System.out.println("siii");
 	}
 	
 	@FXML private void dibujar(ActionEvent event){
@@ -82,9 +90,10 @@ public class Graficacion {
 	}
 	
 	@FXML private void rellenar(ActionEvent event) throws Exception{		
+		
 		FloodFill floodfill = new FloodFill();
 		WritableImage imagen = lienzo.snapshot(null, null);
-		GraphicsContext gc = lienzo.getGraphicsContext2D();
+			GraphicsContext gc = lienzo.getGraphicsContext2D();
 		Color rellenado = Color.rgb(Integer.parseInt(colorR.getText()), 
 				Integer.parseInt(colorG.getText()),Integer.parseInt(colorB.getText()));  
 		int veces = floodfill.fill(Integer.parseInt(corX.getText()), Integer.parseInt(corY.getText()),
@@ -152,6 +161,8 @@ public class Graficacion {
 		int lon = Integer.parseInt(largo.getText());		
 		return new Cuadrado(new Point(Integer.parseInt(a[0]),Integer.parseInt(a[1])), lon);
 	}
+	
+	
 	
 	
 	

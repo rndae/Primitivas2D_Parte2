@@ -12,7 +12,7 @@ public class ScanLine {
 	public ScanLine(){
 		
 	}
-	public void scanLine(Poligono pol,Canvas lienzo,Color color){
+	public void fill(Poligono pol,Canvas lienzo,Color color){
 		ArrayList<Point> vertices = pol.getVertices();
 		//recorriendo los scanline
 		ArrayList<Point[]> aristas = obtenerAristas(vertices);
