@@ -22,6 +22,7 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+
 import modelo.Circumference;
 import modelo.Cuadrado;
 import modelo.FloodFill;
@@ -29,6 +30,7 @@ import modelo.Line;
 import modelo.Poligono;
 import modelo.ScanLine;
 import modelo.Triangulo;
+import modelo.Grafico;
 
 public class Graficacion{  
 	@FXML private AnchorPane pantalla;
@@ -65,11 +67,13 @@ public class Graficacion{
 	@FXML private TextField tcorX, tcorY;
 	@FXML private Button btnTransformar;
 	
-	ObservableList<String> eles;
+	ObservableList<String> figsTexto;
+	ArrayList<Grafico> figuras;
 	
 	
 	public Graficacion(){
-		eles = FXCollections.observableArrayList();
+		figsTexto = FXCollections.observableArrayList();
+		figuras = new ArrayList<Grafico>();
 	}
 		
 	
@@ -86,28 +90,28 @@ public class Graficacion{
 			pintarPoligono(new Triangulo(new Point(50, 5),new Point(50, 200), new Point(150, 100)), gc);		
 			pintarPoligono(new Cuadrado(new Point(150, 50),250), gc);
         */
-		String ele;
 		if(lp1.getText().length()>0 && lp1.getText().length()>0){
-			ele = pintarLinea(nuevaLinea(), gc).toString();
-			//lista
+			modelo.Line lin = pintarLinea(nuevaLinea(), gc);
+			figsTexto.add(lin.toString());
+			figuras.add(lin);
 			}
 		if(centro.getText().length()>0 && radio.getText().length()>0){
-			pintarCircunferencia(nuevaCircunferencia(), gc);
+			Circumference cir = pintarCircunferencia(nuevaCircunferencia(), gc);
+			figsTexto.add(cir.toString());
+			figuras.add(cir);
 		}
 		if(tp1.getText().length()>0 && tp2.getText().length()>0 && tp3.getText().length()>0){
-			pintarPoligono(nuevoTriangulo(), gc);
+			Poligono poli = pintarPoligono(nuevoTriangulo(), gc);			
+			figsTexto.add(poli.toString());
+			figuras.add(poli);
 		}
 		if(cp.getText().length()>0 && largo.getText().length()>0){
-			pintarPoligono(nuevoCuadrado(), gc);
+			Poligono poli = pintarPoligono(nuevoCuadrado(), gc);
+			figsTexto.add(poli.toString());
+			figuras.add(poli);
 		}
-		
-		System.out.print("Dibuja. ");
-		
-		/*eles = FXCollections.observableArrayList(
-				"Cuadrado1","Triangulo1","Circunferencia1","Linea1","Linea2"
-				);*/
-		eles.add(""+5);
-		lista.setItems(eles);
+		System.out.print("Dibuja. ");		
+		lista.setItems(figsTexto);
 	}
 	
 	@FXML private void rellenar(ActionEvent event) throws Exception{		

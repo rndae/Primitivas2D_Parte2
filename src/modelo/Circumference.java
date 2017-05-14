@@ -16,6 +16,10 @@ public final class Circumference extends Primitive2D{
 		r = 0;
 	}
 	
+	public String toString(){
+    	return "Circunferencia ("+h+","+k+") " + r;
+    }
+	
 	public Circumference(int cx, int cy, int radio){
 		h = cx;
 		k = cy;
