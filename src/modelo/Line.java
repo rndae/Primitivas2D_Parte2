@@ -245,14 +245,19 @@ public class Line extends Primitive2D{
 	}
 
 	@Override
-	public void escalar(Point p, int sx, int sy) {
-		
+	public void escalar(int s) {
+		p2.x = p2.x*s;
+		p2.y = p2.y*s;
 		
 	}
 
 	@Override
-	public void rotar(Point p, int deg) {
-		// TODO Auto-generated method stub
+	public void rotar(int deg) {
+		Point p = p1;
+		int x = p2.x-p.x;
+		int y = p2.y-p.y;
+		p2.x = (int)(x*Math.cos(deg)-y*Math.sin(deg)+p.x);
+		p2.y = (int)(y*Math.cos(deg)+x*Math.sin(deg)+p.y);
 		
 	}
 

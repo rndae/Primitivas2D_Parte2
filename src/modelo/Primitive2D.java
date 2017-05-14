@@ -74,8 +74,8 @@ public abstract class Primitive2D implements Grafico{
     }
 
     
-    public abstract void escalar(Point p, int sx, int sy);
-    public abstract void rotar(Point p, int deg);
+    public abstract void escalar(int s);
+    public abstract void rotar(int deg);
     public abstract void trasladar(Point a,Point b);
 	    
 }

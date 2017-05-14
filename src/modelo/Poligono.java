@@ -54,15 +54,27 @@ public class Poligono implements Grafico{
 	}
 
 	@Override
-	public void escalar(Point p, int sx, int sy) {
-		// TODO Auto-generated method stub
+	public void escalar(int s) {
+		Point pv = vertices.get(0);
+		int a = pv.x;
+		int b = pv.y;
+		for(Point p: vertices){
+			p.x = ((p.x - a)*s)+a;
+			p.y = ((p.y - b)*s)+b;
+		}
 		
 	}
 
 	@Override
-	public void rotar(Point p, int deg) {
+	public void rotar(int deg) {
+		Point p = vertices.get(0);
 		for(Point a:vertices){
-			
+			if(!a.equals(p)){				
+				int x = a.x-p.x;
+				int y = a.y-p.y;
+				a.x = (int)(x*Math.cos(deg)-y*Math.sin(deg)+p.x);
+				a.y = (int)(y*Math.cos(deg)+x*Math.sin(deg)+p.y);
+			}
 		}
 		
 	}
