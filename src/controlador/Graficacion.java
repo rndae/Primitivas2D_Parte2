@@ -79,6 +79,9 @@ public class Graficacion{
 	
 	@FXML private void borrar(ActionEvent e){
 		lienzo.getGraphicsContext2D().clearRect(0, 0, lienzo.getWidth(), lienzo.getHeight());
+		figsTexto = FXCollections.observableArrayList();
+		figuras = new ArrayList<Grafico>();
+		lista.setItems(figsTexto);
 		System.out.println("Borra. ");
 	}
 	
