@@ -10,4 +10,7 @@ public class Triangulo extends Poligono{
 		nuevoPunto(p3);
 		generarAristas();
 	}
+	public String toString(){
+    	return "Triangulo"+""+"";
+    }
 }

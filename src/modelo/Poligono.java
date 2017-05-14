@@ -23,12 +23,16 @@ public class Poligono implements Grafico{
         color = new Color( 0,76,153); 
     }
     
+    public String toString(){
+    	return "Poligono";
+    }
+    
     public void nuevoPunto(Point p){
     	vertices.add(p);
     }
     
     public void generarAristas(){
-    	ArrayList<Line> aristas = new ArrayList<Line>(); 
+    	//ArrayList<Line> aristas = new ArrayList<Line>(); 
     	for(int i=0;i<vertices.size()-1;i++){
     		aristas.add(new Line(vertices.get(i),vertices.get(i+1)));
     	}
@@ -37,7 +41,7 @@ public class Poligono implements Grafico{
     }
     
     public ArrayList<Line> dibujar() {
-    	generarAristas();
+    	//generarAristas();
     	return aristas;
 	}
     	

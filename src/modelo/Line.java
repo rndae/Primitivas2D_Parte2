@@ -27,6 +27,10 @@ public class Line extends Primitive2D{
 		DY = Math.abs(p2.y-p1.y);
 	}
 	
+	public String toString(){
+		return "Linea ("+p1.x+","+p1.y+")-("+p2.x+","+p2.y+")";
+	}
+	
 	public void setPoints(Point a, Point b){
 		p1 = a;
 		p2 = b;
