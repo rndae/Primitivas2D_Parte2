@@ -55,19 +55,19 @@
          </children>
       </AnchorPane>
       <Button fx:id="botonDibujar" layoutX="309.0" layoutY="542.0" mnemonicParsing="false" onAction="#dibujar" text="Dibujar" />
-      <AnchorPane layoutX="729.0" layoutY="37.0" prefHeight="211.0" prefWidth="114.0" styleClass="control">
+      <AnchorPane layoutX="668.0" layoutY="202.0" prefHeight="150.0" prefWidth="197.0" styleClass="control">
          <children>
-            <Button fx:id="botonRellenar" layoutX="19.0" layoutY="70.0" mnemonicParsing="false" onAction="#rellenar" text="Rellenar" />
-            <TextField id="colorG" fx:id="colorG" layoutX="21.0" layoutY="147.0" prefHeight="17.0" prefWidth="55.0" text="0" />
-            <Label layoutX="2.0" layoutY="151.0" text="G:" />
-            <TextField id="colorR" fx:id="colorR" layoutX="21.0" layoutY="110.0" prefHeight="17.0" prefWidth="55.0" text="75" />
-            <Label layoutX="2.0" layoutY="114.0" text="R:" />
-            <Label layoutX="2.0" layoutY="191.0" text="B:" />
-            <Label layoutX="63.0" text="Y:" />
-            <TextField id="corY" fx:id="corY" layoutX="57.0" layoutY="21.0" prefHeight="25.0" prefWidth="42.0" />
-            <TextField id="colorB" fx:id="colorB" layoutX="21.0" layoutY="187.0" prefHeight="17.0" prefWidth="55.0" text="130" />
-            <TextField id="corX" fx:id="corX" layoutX="8.0" layoutY="21.0" prefHeight="25.0" prefWidth="42.0" />
-            <Label layoutX="7.0" text="X:" />
+            <Button fx:id="botonRellenar" layoutX="76.0" layoutY="51.0" mnemonicParsing="false" onAction="#rellenar" text="Rellenar" />
+            <TextField id="colorG" fx:id="colorG" layoutX="81.0" layoutY="107.0" prefHeight="18.0" prefWidth="36.0" text="0" />
+            <Label layoutX="94.0" layoutY="82.0" text="G:" />
+            <TextField id="colorR" fx:id="colorR" layoutX="27.0" layoutY="107.0" prefHeight="18.0" prefWidth="36.0" text="75" />
+            <Label layoutX="40.0" layoutY="82.0" text="R:" />
+            <Label layoutX="153.0" layoutY="82.0" text="B:" />
+            <Label layoutX="112.0" layoutY="18.0" text="Y:" />
+            <TextField id="corY" fx:id="corY" layoutX="132.0" layoutY="14.0" prefHeight="25.0" prefWidth="42.0" />
+            <TextField id="colorB" fx:id="colorB" layoutX="140.0" layoutY="107.0" prefHeight="18.0" prefWidth="36.0" text="130" />
+            <TextField id="corX" fx:id="corX" layoutX="42.0" layoutY="14.0" prefHeight="25.0" prefWidth="42.0" />
+            <Label layoutX="22.0" layoutY="18.0" text="X:" />
          </children>
       </AnchorPane>
       <Button fx:id="btnBorrar" layoutX="439.0" layoutY="542.0" mnemonicParsing="false" onAction="#borrar" text="Borrar" />
