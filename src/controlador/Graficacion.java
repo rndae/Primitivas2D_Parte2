@@ -103,17 +103,15 @@ public class Graficacion{
 					fig.escalar(Double.parseDouble(escalar.getText()));
 				}
 				if(tcorX.getText().length()>0 && tcorY.getText().length()>0){
-					fig.trasladar(new Point(1,1), new Point(Integer.parseInt(tcorX.getText())
+					fig.trasladar(new Point(Integer.parseInt(tcorX.getText())
 							,Integer.parseInt(tcorY.getText())));
 				}
 				//pintarFigura(fig, lienzo.getGraphicsContext2D());
 				actualizar(fig, clave, indice);
-				//System.out.println(clave);
-				//System.out.println(fig.toString());
+				System.out.println(clave);
+				System.out.println(fig.toString());
 			}
 
-				System.out.println(clave);
-				//System.out.println(fig.toString());
 		}
 	}
 	
