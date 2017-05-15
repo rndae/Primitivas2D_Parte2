@@ -4,6 +4,7 @@ package controlador;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -75,12 +76,22 @@ public class Graficacion{
 		figuras = new HashMap<String, Grafico>();
 	}
 	
-	private void limpiar(){
-		
+	private void actualizar(Grafico fig, String claveAnte, int indice){
+		figsTexto.set(indice, fig.toString());
+		repintar(lienzo.getGraphicsContext2D());
+		lista.setItems(figsTexto);
+	}
+	
+	private void repintar(GraphicsContext gc){
+		lienzo.getGraphicsContext2D().clearRect(0, 0, lienzo.getWidth(), lienzo.getHeight());		
+		for(Grafico fig : figuras.values()){
+			pintarFigura(fig, lienzo.getGraphicsContext2D());
+		}
 	}
     
 	@FXML private void transformar(ActionEvent e){
 		String clave = lista.getSelectionModel().getSelectedItem();
+		int indice = lista.getSelectionModel().getSelectedIndex();
 		if(clave != null){
 			Grafico fig = figuras.get(clave);
 			if(rotar.getText().length()>0){
@@ -93,7 +104,8 @@ public class Graficacion{
 				fig.trasladar(new Point(1,1), new Point(Integer.parseInt(tcorX.getText())
 						,Integer.parseInt(tcorY.getText())));
 			}
-			pintarFigura(fig, lienzo.getGraphicsContext2D());
+			//pintarFigura(fig, lienzo.getGraphicsContext2D());
+			actualizar(fig, clave, indice);
 			System.out.println(clave);
 			System.out.println(fig.toString());
 		}
