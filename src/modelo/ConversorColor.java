@@ -2,7 +2,7 @@ package modelo;
 
 public class ConversorColor {
 
-	public int[] CMYtoRGB(int c, int m, int y) {
+	public static int[] CMYtoRGB(int c, int m, int y) {
 		int[] rgb = new int[3];
 		rgb[0] = 1 - c;
 		rgb[1] = 1 - m;
@@ -10,7 +10,7 @@ public class ConversorColor {
 		return rgb;
 	}
 
-	public int[] HSLtoRGB(int h, double s, double l) {
+	public static int[] HSLtoRGB(int h, double s, double l) {
 		int[] rgb = new int[3];
 		double r = 0;
 		double g = 0;
@@ -57,7 +57,7 @@ public class ConversorColor {
 		return rgb;
 	}
 
-	private boolean validoHSL(int h, double s, double l) {
+	private static boolean validoHSL(int h, double s, double l) {
 		boolean valido = false;
 		if (0 <= h && h < 360) {
 			if (0 <= s && s <= 1.0) {

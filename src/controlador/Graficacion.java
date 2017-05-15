@@ -26,6 +26,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
 import modelo.Circumference;
+import modelo.ConversorColor;
 import modelo.Cuadrado;
 import modelo.FloodFill;
 import modelo.Line;
@@ -35,7 +36,12 @@ import modelo.Triangulo;
 import modelo.Grafico;
 
 public class Graficacion{  
+	@FXML private AnchorPane controles;
+	@FXML private AnchorPane inicio;
+	
 	@FXML private AnchorPane pantalla;
+	
+	@FXML private Button btnColor;
 	
 	@FXML private Canvas lienzo;
 	
@@ -115,6 +121,32 @@ public class Graficacion{
 		}
 	}
 	
+	@FXML private void seleccionarColor(){
+		inicio.setVisible(true);
+	}
+	
+	@FXML private void btnRGB(){
+		inicio.setVisible(false);
+		col1.setText("R:");
+		col2.setText("G:");
+		col3.setText("B:");
+		System.out.println("a RGB");
+	}
+	@FXML private void btnHSL(){
+		inicio.setVisible(false);
+		col1.setText("H:");
+		col2.setText("S:");
+		col3.setText("L:");
+		System.out.println("a HSL");
+	}
+	@FXML private void btnCMY(){
+		inicio.setVisible(false);
+		col1.setText("C:");
+		col2.setText("M:");
+		col3.setText("Y:");
+		System.out.println("a CMY");
+	}
+	
 	@FXML private void borrar(ActionEvent e){
 		lienzo.getGraphicsContext2D().clearRect(0, 0, lienzo.getWidth(), lienzo.getHeight());
 		figsTexto = FXCollections.observableArrayList();
@@ -170,13 +202,22 @@ public class Graficacion{
 		lista.setItems(figsTexto);
 	}
 	
-	@FXML private void rellenar(ActionEvent event) throws Exception{		
+	@FXML private void rellenar(ActionEvent event) throws Exception{
+		int r = Integer.parseInt(colorR.getText());
+		int g = Integer.parseInt(colorG.getText());
+		int b = Integer.parseInt(colorB.getText());
+		int[] cols = new int[3];
+		 if(col1.getText().charAt(0) =='H'){
+			cols = ConversorColor.HSLtoRGB(r, g, b);
+		 }else if(col1.getText().charAt(0) =='C'){
+				cols = ConversorColor.CMYtoRGB(r, g, b);
+	     }
+		cols[0] = r; cols[1] = g; cols[2] = b;
 		
 		FloodFill floodfill = new FloodFill();
 		WritableImage imagen = lienzo.snapshot(null, null);
 			GraphicsContext gc = lienzo.getGraphicsContext2D();
-		Color rellenado = Color.rgb(Integer.parseInt(colorR.getText()), 
-				Integer.parseInt(colorG.getText()),Integer.parseInt(colorB.getText()));  
+		Color rellenado = Color.rgb(r,g,b);  
 		int veces = floodfill.fill(Integer.parseInt(corX.getText()), Integer.parseInt(corY.getText()),
 				    Color.WHITE, gc, lienzo, imagen, rellenado);
 		gc.drawImage(imagen, 0, 0);

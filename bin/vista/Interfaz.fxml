@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.canvas.*?>
 <?import javafx.scene.control.*?>
@@ -10,89 +13,134 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="btnTransformar" prefHeight="634.0" prefWidth="972.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Graficacion">
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Graficacion">
    <children>
-      <AnchorPane fx:id="pantalla" layoutX="34.0" layoutY="37.0" prefHeight="389.0" prefWidth="651.0" styleClass="dibujo">
+      <AnchorPane id="controles" fx:id="controles" prefHeight="634.0" prefWidth="972.0" styleClass="principal">
          <children>
-            <Canvas id="lienzo" fx:id="lienzo" height="373.0" layoutX="8.0" layoutY="7.0" onMouseClicked="#seleccion" width="636.0" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="7.0" />
-         </children></AnchorPane>
-      <AnchorPane fx:id="lineaControl" layoutX="34.0" layoutY="440.0" prefHeight="135.0" prefWidth="150.0" styleClass="control">
-         <children>
-            <TextField id="p1" fx:id="lp1" layoutX="63.0" layoutY="44.0" prefHeight="23.0" prefWidth="77.0" />
-            <TextField id="p2" fx:id="lp2" layoutX="63.0" layoutY="85.0" prefHeight="23.0" prefWidth="77.0" />
-            <Label layoutX="14.0" layoutY="48.0" text="Punto 1:" />
-            <Label layoutX="14.0" layoutY="89.0" text="Punto 2:" />
-            <Label layoutX="7.0" layoutY="6.0" text="Segmento:" />
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="circunControl" layoutX="210.0" layoutY="440.0" prefHeight="135.0" prefWidth="150.0" styleClass="control">
-         <children>
-            <TextField id="p1" fx:id="centro" layoutX="63.0" layoutY="44.0" prefHeight="23.0" prefWidth="77.0" />
-            <TextField id="p2" fx:id="radio" layoutX="63.0" layoutY="84.0" prefHeight="23.0" prefWidth="77.0" />
-            <Label layoutX="14.0" layoutY="48.0" text="Centro:" />
-            <Label layoutX="17.0" layoutY="88.0" text="Radio:" />
-            <Label layoutX="7.0" layoutY="5.0" text="Circunferencia:" />
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="trianguloControl" layoutX="584.0" layoutY="440.0" prefHeight="135.0" prefWidth="150.0" styleClass="control">
-         <children>
-            <TextField id="p1" fx:id="tp1" layoutX="63.0" layoutY="31.0" prefHeight="23.0" prefWidth="77.0" />
-            <TextField id="p2" fx:id="tp2" layoutX="63.0" layoutY="63.0" prefHeight="23.0" prefWidth="77.0" />
-            <TextField id="p2" fx:id="tp3" layoutX="63.0" layoutY="95.0" prefHeight="23.0" prefWidth="77.0" />
-            <Label layoutX="13.0" layoutY="35.0" text="Punto 1:" />
-            <Label layoutX="13.0" layoutY="67.0" text="Punto 2:" />
-            <Label layoutX="13.0" layoutY="99.0" text="Punto 3:" />
-            <Label layoutX="8.0" layoutY="6.0" text="Triangulo:" />
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="cuadradoControl" layoutX="394.0" layoutY="440.0" prefHeight="135.0" prefWidth="150.0" styleClass="control">
-         <children>
-            <TextField id="p1" fx:id="cp" layoutX="62.0" layoutY="44.0" prefHeight="23.0" prefWidth="77.0" />
-            <TextField id="p1" fx:id="largo" layoutX="62.0" layoutY="83.0" prefHeight="23.0" prefWidth="77.0" />
-            <Label layoutX="13.0" layoutY="48.0" text="Punto:" />
-            <Label layoutX="13.0" layoutY="87.0" text="Logitud:" />
-            <Label layoutX="7.0" layoutY="6.0" text="Cuadrado:" />
-         </children>
-      </AnchorPane>
-      <Button fx:id="botonDibujar" layoutX="318.0" layoutY="588.0" mnemonicParsing="false" onAction="#dibujar" text="Dibujar" />
-      <AnchorPane layoutX="734.0" layoutY="45.0" prefHeight="150.0" prefWidth="196.0" styleClass="control">
-         <children>
-            <Button fx:id="botonRellenar" layoutX="69.0" layoutY="111.0" mnemonicParsing="false" onAction="#rellenar" text="Rellenar" />
-            <TextField id="colorG" fx:id="colorG" layoutX="80.0" layoutY="71.0" prefHeight="18.0" prefWidth="36.0" text="0" />
-            <Label id="col2" fx:id="col2" layoutX="86.0" layoutY="54.0" text="G:" />
-            <TextField id="colorR" fx:id="colorR" layoutX="24.0" layoutY="71.0" prefHeight="18.0" prefWidth="36.0" text="75" />
-            <Label id="col1" fx:id="col1" layoutX="34.0" layoutY="54.0" text="R:" />
-            <Label id="col3" fx:id="col3" layoutX="150.0" layoutY="54.0" text="B:" />
-            <Label layoutX="123.0" layoutY="6.0" text="Y:" />
-            <TextField id="corY" fx:id="corY" layoutX="110.0" layoutY="27.0" prefHeight="25.0" prefWidth="36.0" />
-            <TextField id="colorB" fx:id="colorB" layoutX="140.0" layoutY="71.0" prefHeight="18.0" prefWidth="36.0" text="130" />
-            <TextField id="corX" fx:id="corX" layoutX="51.0" layoutY="27.0" prefHeight="25.0" prefWidth="36.0" />
-            <Label layoutX="64.0" layoutY="6.0" text="X:" />
-         </children>
-      </AnchorPane>
-      <Button fx:id="btnBorrar" layoutX="448.0" layoutY="588.0" mnemonicParsing="false" onAction="#borrar" text="Borrar" />
-      <SplitPane dividerPositions="0.46825396825396826" layoutX="763.0" layoutY="226.0" orientation="VERTICAL" prefHeight="380.0" prefWidth="171.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+            <AnchorPane fx:id="pantalla" layoutX="34.0" layoutY="37.0" prefHeight="389.0" prefWidth="651.0" styleClass="dibujo">
                <children>
-                  <ListView id="lista" fx:id="lista" layoutY="-24.0" prefHeight="176.0" prefWidth="169.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Canvas id="lienzo" fx:id="lienzo" height="373.0" layoutX="8.0" layoutY="7.0" onMouseClicked="#seleccion" width="636.0" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="7.0" />
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+            <AnchorPane fx:id="lineaControl" layoutX="34.0" layoutY="440.0" prefHeight="135.0" prefWidth="150.0" styleClass="control">
                <children>
-                  <Label layoutX="26.0" layoutY="18.0" text="Rotar:" />
-                  <TextField id="rotar" fx:id="rotar" layoutX="85.0" layoutY="14.0" prefHeight="25.0" prefWidth="40.0" />
-                  <Label layoutX="26.0" layoutY="62.0" text="Escalar:" />
-                  <Label layoutX="82.0" layoutY="85.0" text="X:" />
-                  <TextField id="tcorX" fx:id="tcorX" layoutX="74.0" layoutY="104.0" prefHeight="25.0" prefWidth="36.0" />
-                  <TextField id="tcorY" fx:id="tcorY" layoutX="117.0" layoutY="104.0" prefHeight="25.0" prefWidth="36.0" />
-                  <Label layoutX="122.0" layoutY="85.0" text="Y:" />
-                  <Label layoutX="16.0" layoutY="108.0" text="Trasladar:" />
-                  <Button fx:id="btnTransformar" layoutX="44.0" layoutY="152.0" mnemonicParsing="false" onAction="#transformar" text="Transformar" />
-                  <TextField id="escalar" fx:id="escalar" layoutX="85.0" layoutY="58.0" prefHeight="25.0" prefWidth="40.0" />
+                  <TextField id="p1" fx:id="lp1" layoutX="63.0" layoutY="44.0" prefHeight="23.0" prefWidth="77.0" />
+                  <TextField id="p2" fx:id="lp2" layoutX="63.0" layoutY="85.0" prefHeight="23.0" prefWidth="77.0" />
+                  <Label layoutX="14.0" layoutY="48.0" text="Punto 1:" />
+                  <Label layoutX="14.0" layoutY="89.0" text="Punto 2:" />
+                  <Label layoutX="7.0" layoutY="6.0" text="Segmento:" />
                </children>
             </AnchorPane>
-        </items>
-      </SplitPane>
+            <AnchorPane fx:id="circunControl" layoutX="210.0" layoutY="440.0" prefHeight="135.0" prefWidth="150.0" styleClass="control">
+               <children>
+                  <TextField id="p1" fx:id="centro" layoutX="63.0" layoutY="44.0" prefHeight="23.0" prefWidth="77.0" />
+                  <TextField id="p2" fx:id="radio" layoutX="63.0" layoutY="84.0" prefHeight="23.0" prefWidth="77.0" />
+                  <Label layoutX="14.0" layoutY="48.0" text="Centro:" />
+                  <Label layoutX="17.0" layoutY="88.0" text="Radio:" />
+                  <Label layoutX="7.0" layoutY="5.0" text="Circunferencia:" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="trianguloControl" layoutX="584.0" layoutY="440.0" prefHeight="135.0" prefWidth="150.0" styleClass="control">
+               <children>
+                  <TextField id="p1" fx:id="tp1" layoutX="63.0" layoutY="31.0" prefHeight="23.0" prefWidth="77.0" />
+                  <TextField id="p2" fx:id="tp2" layoutX="63.0" layoutY="63.0" prefHeight="23.0" prefWidth="77.0" />
+                  <TextField id="p2" fx:id="tp3" layoutX="63.0" layoutY="95.0" prefHeight="23.0" prefWidth="77.0" />
+                  <Label layoutX="13.0" layoutY="35.0" text="Punto 1:" />
+                  <Label layoutX="13.0" layoutY="67.0" text="Punto 2:" />
+                  <Label layoutX="13.0" layoutY="99.0" text="Punto 3:" />
+                  <Label layoutX="8.0" layoutY="6.0" text="Triangulo:" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="cuadradoControl" layoutX="394.0" layoutY="440.0" prefHeight="135.0" prefWidth="150.0" styleClass="control">
+               <children>
+                  <TextField id="p1" fx:id="cp" layoutX="62.0" layoutY="44.0" prefHeight="23.0" prefWidth="77.0" />
+                  <TextField id="p1" fx:id="largo" layoutX="62.0" layoutY="83.0" prefHeight="23.0" prefWidth="77.0" />
+                  <Label layoutX="13.0" layoutY="48.0" text="Punto:" />
+                  <Label layoutX="13.0" layoutY="87.0" text="Logitud:" />
+                  <Label layoutX="7.0" layoutY="6.0" text="Cuadrado:" />
+               </children>
+            </AnchorPane>
+            <Button fx:id="botonDibujar" layoutX="318.0" layoutY="588.0" mnemonicParsing="false" onAction="#dibujar" text="Dibujar" />
+            <AnchorPane layoutX="734.0" layoutY="45.0" prefHeight="150.0" prefWidth="196.0" styleClass="control">
+               <children>
+                  <Button fx:id="botonRellenar" layoutX="69.0" layoutY="111.0" mnemonicParsing="false" onAction="#rellenar" text="Rellenar" />
+                  <TextField id="colorG" fx:id="colorG" layoutX="80.0" layoutY="71.0" prefHeight="18.0" prefWidth="36.0" text="0" />
+                  <Label id="col2" fx:id="col2" layoutX="86.0" layoutY="54.0" text=":" />
+                  <TextField id="colorR" fx:id="colorR" layoutX="24.0" layoutY="71.0" prefHeight="18.0" prefWidth="36.0" text="0" />
+                  <Label id="col1" fx:id="col1" layoutX="34.0" layoutY="54.0" text=":" />
+                  <Label id="col3" fx:id="col3" layoutX="150.0" layoutY="54.0" text=":" />
+                  <Label layoutX="123.0" layoutY="6.0" text="Y:" />
+                  <TextField id="corY" fx:id="corY" layoutX="110.0" layoutY="27.0" prefHeight="25.0" prefWidth="36.0" text="0" />
+                  <TextField id="colorB" fx:id="colorB" layoutX="140.0" layoutY="71.0" prefHeight="18.0" prefWidth="36.0" text="0" />
+                  <TextField id="corX" fx:id="corX" layoutX="51.0" layoutY="27.0" prefHeight="25.0" prefWidth="36.0" text="0" />
+                  <Label layoutX="64.0" layoutY="6.0" text="X:" />
+               </children>
+            </AnchorPane>
+            <Button fx:id="btnBorrar" layoutX="448.0" layoutY="588.0" mnemonicParsing="false" onAction="#borrar" text="Borrar" />
+            <SplitPane dividerPositions="0.46825396825396826" layoutX="763.0" layoutY="226.0" orientation="VERTICAL" prefHeight="380.0" prefWidth="171.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                     <children>
+                        <ListView id="lista" fx:id="lista" layoutY="-24.0" prefHeight="176.0" prefWidth="169.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                     <children>
+                        <Label layoutX="26.0" layoutY="18.0" text="Rotar:" />
+                        <TextField id="rotar" fx:id="rotar" layoutX="85.0" layoutY="14.0" prefHeight="25.0" prefWidth="40.0" />
+                        <Label layoutX="26.0" layoutY="62.0" text="Escalar:" />
+                        <Label layoutX="82.0" layoutY="85.0" text="X:" />
+                        <TextField id="tcorX" fx:id="tcorX" layoutX="74.0" layoutY="104.0" prefHeight="25.0" prefWidth="36.0" />
+                        <TextField id="tcorY" fx:id="tcorY" layoutX="117.0" layoutY="104.0" prefHeight="25.0" prefWidth="36.0" />
+                        <Label layoutX="122.0" layoutY="85.0" text="Y:" />
+                        <Label layoutX="16.0" layoutY="108.0" text="Trasladar:" />
+                        <Button id="btnTransformar" fx:id="btnTransformar" layoutX="44.0" layoutY="152.0" mnemonicParsing="false" onAction="#transformar" text="Transformar" />
+                        <TextField id="escalar" fx:id="escalar" layoutX="85.0" layoutY="58.0" prefHeight="25.0" prefWidth="40.0" />
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+            <Button id="btnColor" fx:id="btnColor" layoutX="210.0" layoutY="588.0" mnemonicParsing="false" onAction="#seleccionarColor" text="Color" />
+         </children>
+      </AnchorPane>
+      <AnchorPane id="inicio" fx:id="inicio" opacity="0.84" prefHeight="634.0" prefWidth="972.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane layoutX="131.0" layoutY="86.0" prefHeight="462.0" prefWidth="711.0" style="-fx-background-color: black;">
+               <children>
+                  <Circle id="sHSL" fx:id="sHSL" fill="#b7aea7" layoutX="356.0" layoutY="218.0" onMouseClicked="#btnHSL" radius="68.0" stroke="BLACK" strokeType="INSIDE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Circle>
+                  <Rectangle id="sRGB" fx:id="sRGB" arcHeight="5.0" arcWidth="5.0" fill="#419d9a" height="50.0" layoutX="68.0" layoutY="193.0" onMouseClicked="#btnRGB" stroke="BLACK" strokeType="INSIDE" width="161.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Rectangle>
+                  <Rectangle id="sCMY" fx:id="sCMY" arcHeight="5.0" arcWidth="5.0" fill="#db4b0c" height="50.0" layoutX="478.0" layoutY="193.0" onMouseClicked="#btnCMY" stroke="BLACK" strokeType="INSIDE" width="161.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Rectangle>
+                  <Text fill="#eeeded" layoutX="93.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RGB" wrappingWidth="110.13671875">
+                     <font>
+                        <Font name="Serif Regular" size="50.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#eeeded" layoutX="307.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HSL" wrappingWidth="98.13671875">
+                     <font>
+                        <Font name="Serif Regular" size="50.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#eeeded" layoutX="487.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CMY" wrappingWidth="123.13671875">
+                     <font>
+                        <Font name="Serif Regular" size="50.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
