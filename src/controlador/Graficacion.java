@@ -203,26 +203,31 @@ public class Graficacion{
 	}
 	
 	@FXML private void rellenar(ActionEvent event) throws Exception{
-		int r = Integer.parseInt(colorR.getText());
-		int g = Integer.parseInt(colorG.getText());
-		int b = Integer.parseInt(colorB.getText());
+		double r = Double.parseDouble(colorR.getText());
+		double g = Double.parseDouble(colorG.getText());
+		double b = Double.parseDouble(colorB.getText());
 		int[] cols = new int[3];
+		cols[0] = (int)r; cols[1] = (int)g; cols[2]= (int)b;
 		 if(col1.getText().charAt(0) =='H'){
-			cols = ConversorColor.HSLtoRGB(r, g, b);
+			cols = ConversorColor.HSLtoRGB((int)r, (int)g, (int)b);
 		 }else if(col1.getText().charAt(0) =='C'){
 				cols = ConversorColor.CMYtoRGB(r, g, b);
 	     }
-		cols[0] = r; cols[1] = g; cols[2] = b;
+		r = cols[0] ; g = cols[1]; b = cols[2];
 		
 		FloodFill floodfill = new FloodFill();
 		WritableImage imagen = lienzo.snapshot(null, null);
 			GraphicsContext gc = lienzo.getGraphicsContext2D();
-		Color rellenado = Color.rgb(r,g,b);  
+		Color rellenado = Color.rgb((int)r,(int)g,(int)b); 
+		System.out.println(r);
+		System.out.println(g);
+		System.out.println(b);
 		int veces = floodfill.fill(Integer.parseInt(corX.getText()), Integer.parseInt(corY.getText()),
 				    Color.WHITE, gc, lienzo, imagen, rellenado);
 		gc.drawImage(imagen, 0, 0);
 		System.out.print("Rellena "+veces + " pixeles. ");
 	}
+
 	
 	@FXML private void seleccion(MouseEvent e){
 		corX.setText(""+(int)e.getX());
