@@ -74,20 +74,26 @@ public class Graficacion{
 		figsTexto = FXCollections.observableArrayList();
 		figuras = new HashMap<String, Grafico>();
 	}
+	
+	private void limpiar(){
+		
+	}
     
 	@FXML private void transformar(ActionEvent e){
 		String clave = lista.getSelectionModel().getSelectedItem();
 		if(clave != null){
 			Grafico fig = figuras.get(clave);
 			if(rotar.getText().length()>0){
-				//Rota
+				fig.rotar(Integer.parseInt(rotar.getText()));
 			}
 			if(escalar.getText().length()>0){
-				//Escala
+				fig.escalar(Integer.parseInt(escalar.getText()));
 			}
 			if(tcorX.getText().length()>0 && tcorY.getText().length()>0){
-				//Traslada
+				fig.trasladar(new Point(1,1), new Point(Integer.parseInt(tcorX.getText())
+						,Integer.parseInt(tcorY.getText())));
 			}
+			pintarFigura(fig, lienzo.getGraphicsContext2D());
 			System.out.println(clave);
 			System.out.println(fig.toString());
 		}
@@ -152,6 +158,18 @@ public class Graficacion{
 		tcorX.setText(""+(int)e.getX());
 		tcorY.setText(""+(int)e.getY());
 		//System.out.println(e.getX()+" "+e.getY());
+	}
+	
+	private void pintarFigura(Grafico graf, GraphicsContext gc){
+		if(graf instanceof Line){
+			pintarLinea((Line)graf, gc);
+		}
+		else if(graf instanceof Circumference){
+			pintarCircunferencia((Circumference)graf, gc);
+		}
+		else if(graf instanceof Poligono){
+			pintarPoligono((Poligono)graf, gc);
+		}
 	}
 	
 	private Circumference pintarCircunferencia(Circumference cir, GraphicsContext gc){
