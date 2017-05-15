@@ -18,7 +18,7 @@ public class Cuadrado extends Poligono{
 	}
 	@Override
 	public String toString(){
-		return "Cuadrado (" +p.x +"," +p.y+") "+lado;
+		return "Cuadrado (" +p.x +"," +p.y+") ";
 	}
 	
 		
