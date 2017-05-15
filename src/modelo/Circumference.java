@@ -21,6 +21,10 @@ public final class Circumference extends Primitive2D{
 		k = cy;
 		r = radio;
 	}
+	@Override
+	public String toString(){
+		return "Circunferencia";
+	}
 	
 	public Circumference(int cx, int cy, int radio, String th, String tipo, Color col){
 		super(th, tipo, col);
