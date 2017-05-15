@@ -4,27 +4,33 @@
 }
 
 .principal{
-	-fx-font-family: "sans";
-	-fx-font-size: 12px ;
+	/*-fx-font-family: "Segoe UI";*/
+	/*-fx-font-size: 13px ;*/
 	-fx-background-color:#f1f0ec;
+	
 }
  /*#9ba79d; #a83532; #f1f0ec;*/
 .dibujo {
 	-fx-background-color: white;
 	-fx-border-color: #cbcbbf;
-	-fx-border-width: 4.0px ;
+	-fx-border-width: 1.5px ;
 }
 
 .control {
     -fx-border-color: #cbcbbf;
-    -fx-background-color: #f1f0ec;
-    -fx-border-style: solid;
-    -fx-border-width: 2.0px ;
+    -fx-background-color: white;
+    -fx-border-style:solid ;
+    -fx-border-width: 2.2px ;
 	/*-fx-border-width: 150;*/
 }
 
 .buttons{
 	
+}
+
+.labels{
+	
+    -fx-text-fill: gray;
 }
 
 .body{
