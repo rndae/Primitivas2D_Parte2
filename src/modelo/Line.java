@@ -28,7 +28,7 @@ public class Line extends Primitive2D{
 	}
 	
 	public String toString(){
-		return "Segmento ("+p1.x+","+p1.y+")-("+p2.x+","+p2.y+")";
+		return "Linea ("+p1.x+","+p1.y+")-("+p2.x+","+p2.y+")";
 	}
 	
 	public void setPoints(Point a, Point b){
@@ -245,9 +245,9 @@ public class Line extends Primitive2D{
 	}
 
 	@Override
-	public void escalar(int s) {
-		p2.x = p2.x*s;
-		p2.y = p2.y*s;
+	public void escalar(double s) {
+		p2.x = (int)(p2.x*s);
+		p2.y = (int)(p2.y*s);
 		
 	}
 
@@ -256,8 +256,9 @@ public class Line extends Primitive2D{
 		Point p = p1;
 		int x = p2.x-p.x;
 		int y = p2.y-p.y;
-		p2.x = (int)(x*Math.cos(deg)-y*Math.sin(deg)+p.x);
-		p2.y = (int)(y*Math.cos(deg)+x*Math.sin(deg)+p.y);
+		double degrees = Math.toDegrees(deg);
+		p2.x = (int)(x*Math.cos(degrees)-y*Math.sin(degrees)+p.x);
+		p2.y = (int)(y*Math.cos(degrees)+x*Math.sin(degrees)+p.y);
 		
 	}
 
@@ -265,6 +266,18 @@ public class Line extends Primitive2D{
 	public void trasladar(Point a, Point b) {
 		int dx = a.x-b.x;
 		int dy = a.y-b.y;
+		//modificando el punto 1
+		p1.x = p1.x +dx;
+		p1.y = p1.y +dy;
+		//modificando el punto 2
+		p2.x = p2.x +dx;
+		p2.y = p2.y +dy;
+	}
+
+	@Override
+	public void trasladar(Point a) {
+		int dx = a.x-p1.x;
+		int dy = a.y-p1.y;
 		//modificando el punto 1
 		p1.x = p1.x +dx;
 		p1.y = p1.y +dy;

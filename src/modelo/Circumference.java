@@ -16,10 +16,6 @@ public final class Circumference extends Primitive2D{
 		r = 0;
 	}
 	
-	public String toString(){
-    	return "Circunferencia ("+h+","+k+") " + r;
-    }
-	
 	public Circumference(int cx, int cy, int radio){
 		h = cx;
 		k = cy;
@@ -176,8 +172,8 @@ public final class Circumference extends Primitive2D{
 	}
 
 	@Override
-	public void escalar(int s) {
-		r = r * s;
+	public void escalar(double s) {
+		r = (int)(r * s);
 		
 	}
 
@@ -194,6 +190,12 @@ public final class Circumference extends Primitive2D{
 		int dy = a.y-b.y;
 		h = h + dx;
 		k = k + dy;
+	}
+
+	@Override
+	public void trasladar(Point a) {
+		h = a.x;
+		k = a.y;
 	}
 	
 }

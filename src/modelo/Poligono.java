@@ -54,13 +54,13 @@ public class Poligono implements Grafico{
 	}
 
 	@Override
-	public void escalar(int s) {
+	public void escalar(double s) {
 		Point pv = vertices.get(0);
 		int a = pv.x;
 		int b = pv.y;
 		for(Point p: vertices){
-			p.x = ((p.x - a)*s)+a;
-			p.y = ((p.y - b)*s)+b;
+			p.x = (int)(((p.x - a)*s)+a);
+			p.y = (int)(((p.y - b)*s)+b);
 		}
 		
 	}
@@ -72,8 +72,9 @@ public class Poligono implements Grafico{
 			if(!a.equals(p)){				
 				int x = a.x-p.x;
 				int y = a.y-p.y;
-				a.x = (int)(x*Math.cos(deg)-y*Math.sin(deg)+p.x);
-				a.y = (int)(y*Math.cos(deg)+x*Math.sin(deg)+p.y);
+				double degrees = Math.toDegrees(deg);
+				a.x = (int)(x*Math.cos(degrees)-y*Math.sin(degrees)+p.x);
+				a.y = (int)(y*Math.cos(degrees)+x*Math.sin(degrees)+p.y);
 			}
 		}
 		
@@ -88,6 +89,18 @@ public class Poligono implements Grafico{
 			p.y = p.y+dy;
 		}
 		generarAristas();
+	}
+
+	@Override
+	public void trasladar(Point a) {
+		Point pv = vertices.get(0);
+		int dx = a.x-pv.x;
+		int dy = a.y-pv.y;
+		for(Point p:vertices){
+			p.x = p.x+dx;
+			p.y = p.y+dy;
+		}
+		generarAristas();		
 	}
 
 	
