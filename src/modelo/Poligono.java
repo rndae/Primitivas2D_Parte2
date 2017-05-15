@@ -72,7 +72,7 @@ public class Poligono implements Grafico{
 			if(!a.equals(p)){				
 				int x = a.x-p.x;
 				int y = a.y-p.y;
-				double degrees = Math.toDegrees(deg);
+				double degrees = Math.toRadians(-deg);
 				a.x = (int)(x*Math.cos(degrees)-y*Math.sin(degrees)+p.x);
 				a.y = (int)(y*Math.cos(degrees)+x*Math.sin(degrees)+p.y);
 			}

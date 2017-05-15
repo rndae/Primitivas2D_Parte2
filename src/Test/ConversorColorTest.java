@@ -13,8 +13,7 @@ public class ConversorColorTest {
 	public void test1() {
 		ConversorColor cc = new ConversorColor();
 		int[] resul = cc.HSLtoRGB(0, 0, 0.4);	
-		int[] resp = {102,102,102};		
-		System.out.println(Arrays.toString(resul));
+		int[] resp = {102,102,102};				
 		assertArrayEquals(resp,resul);
 	}
 	
