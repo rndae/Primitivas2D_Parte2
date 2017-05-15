@@ -69,8 +69,7 @@ public class Graficacion{
 	
 	ObservableList<String> figsTexto;
 	HashMap<String,Grafico> figuras;
-	
-	
+		
 	public Graficacion(){
 		figsTexto = FXCollections.observableArrayList();
 		figuras = new HashMap<String, Grafico>();
@@ -93,21 +92,23 @@ public class Graficacion{
 		String clave = lista.getSelectionModel().getSelectedItem();
 		int indice = lista.getSelectionModel().getSelectedIndex();
 		if(clave != null){
-			Grafico fig = figuras.get(clave);
-			if(rotar.getText().length()>0){
-				fig.rotar(Integer.parseInt(rotar.getText()));
+				Grafico fig = figuras.get(clave);
+				if(fig != null){
+				if(rotar.getText().length()>0){
+					fig.rotar(Integer.parseInt(rotar.getText()));
+				}
+				if(escalar.getText().length()>0){
+					fig.escalar(Integer.parseInt(escalar.getText()));
+				}
+				if(tcorX.getText().length()>0 && tcorY.getText().length()>0){
+					fig.trasladar(new Point(1,1), new Point(Integer.parseInt(tcorX.getText())
+							,Integer.parseInt(tcorY.getText())));
+				}
+				//pintarFigura(fig, lienzo.getGraphicsContext2D());
+				actualizar(fig, clave, indice);
+				System.out.println(clave);
+				System.out.println(fig.toString());
 			}
-			if(escalar.getText().length()>0){
-				fig.escalar(Integer.parseInt(escalar.getText()));
-			}
-			if(tcorX.getText().length()>0 && tcorY.getText().length()>0){
-				fig.trasladar(new Point(1,1), new Point(Integer.parseInt(tcorX.getText())
-						,Integer.parseInt(tcorY.getText())));
-			}
-			//pintarFigura(fig, lienzo.getGraphicsContext2D());
-			actualizar(fig, clave, indice);
-			System.out.println(clave);
-			System.out.println(fig.toString());
 		}
 	}
 	
