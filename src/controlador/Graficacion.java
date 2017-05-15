@@ -133,7 +133,7 @@ public class Graficacion{
 			pintarPoligono(new Cuadrado(new Point(150, 50),250), gc);
         */
 		String clave = "";
-		if(lp1.getText().length()>0 && lp1.getText().length()>0){
+		if(lp1.getText().length()>0 && lp2.getText().length()>0){
 			modelo.Line lin = pintarLinea(nuevaLinea(), gc);
 			clave = lin.toString()+lins;
 			figsTexto.add(clave);
@@ -161,6 +161,11 @@ public class Graficacion{
 			figuras.put(clave, poli);
 			cuads++;
 		}
+		lp1.setText("");lp2.setText("");
+		radio.setText("");centro.setText("");
+		tp1.setText("");tp2.setText("");tp3.setText("");
+		largo.setText("");cp.setText("");
+		
 		System.out.print("Dibuja. ");		
 		lista.setItems(figsTexto);
 	}
