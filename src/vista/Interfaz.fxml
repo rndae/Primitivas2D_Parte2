@@ -193,17 +193,17 @@
                   </Rectangle>
                   <Text fill="#eeeded" layoutX="93.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RGB" wrappingWidth="110.13671875">
                      <font>
-                        <Font name="Serif Regular" size="50.0" />
+                        <Font name="Serif Regular" size="43.0" />
                      </font>
                   </Text>
                   <Text fill="#eeeded" layoutX="307.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HSL" wrappingWidth="98.13671875">
                      <font>
-                        <Font name="Serif Regular" size="50.0" />
+                        <Font name="Serif Regular" size="43.0" />
                      </font>
                   </Text>
                   <Text fill="#eeeded" layoutX="487.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CMY" wrappingWidth="123.13671875">
                      <font>
-                        <Font name="Serif Regular" size="50.0" />
+                        <Font name="Serif Regular" size="43.0" />
                      </font>
                   </Text>
                </children>
