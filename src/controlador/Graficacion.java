@@ -98,7 +98,7 @@ public class Graficacion{
 					fig.rotar(Integer.parseInt(rotar.getText()));
 				}
 				if(escalar.getText().length()>0){
-					fig.escalar(Integer.parseInt(escalar.getText()));
+					fig.escalar(Double.parseDouble(escalar.getText()));
 				}
 				if(tcorX.getText().length()>0 && tcorY.getText().length()>0){
 					fig.trasladar(new Point(1,1), new Point(Integer.parseInt(tcorX.getText())
@@ -204,7 +204,7 @@ public class Graficacion{
 	private Poligono pintarPoligono(Poligono pol, GraphicsContext gc){
 		ArrayList<Line> lins = pol.dibujar();
 		for(Line lin: lins){
-			ArrayList<Point> ar = lin.DDA();
+			ArrayList<Point> ar = lin.bresenham();
 			for(Point po: ar){
 				gc.fillRect(po.getX(), po.getY(), 1, 1);
 			}
