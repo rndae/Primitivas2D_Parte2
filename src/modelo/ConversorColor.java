@@ -10,54 +10,50 @@ public class ConversorColor {
 		return rgb;
 	}
 
-	public double[] HSLtoRGB(int h, double s, double l) {
-		double[] rgb = new double[3];		
+	public int[] HSLtoRGB(int h, double s, double l) {
+		int[] rgb = new int[3];
+		double r = 0;
+		double g = 0;
+		double b = 0;
 		if (validoHSL(h, s, l)) {
 			double c = (1 - Math.abs(2 * l - 1)) * s;
-			int hp = h / 60;
+			double hp = h / 60.0;
 			double x = c * (1 - Math.abs((hp % 2) - 1));
 			if(0 <= hp && hp < 1){
-				rgb[0] = c;
-				rgb[1] = x;
-				rgb[2] = 0;
+				r = c;
+				g = x;
+				b = 0;
 			}
 			if(1 <= hp && hp < 2){
-				rgb[0] = x;
-				rgb[1] = c;
-				rgb[2] = 0;
+				r = x;
+				g = c;
+				b = 0;
 			}
 			if(2 <= hp && hp < 3){
-				rgb[0] = 0;
-				rgb[1] = c;
-				rgb[2] = x;
+				r = 0;
+				g = c;
+				b = x;
 			}
 			if(3 <= hp && hp < 4){
-				rgb[0] = 0;
-				rgb[1] = x;
-				rgb[2] = c;
+				r = 0;
+				g = x;
+				b = c;
 			}
 			if(4 <= hp && hp < 5){
-				rgb[0] = x;
-				rgb[1] = 0;
-				rgb[2] = c;
+				r = x;
+				g = 0;
+				b = c;
 			}
 			if(5 <= hp && hp < 6){
-				rgb[0] = c;
-				rgb[1] = 0;
-				rgb[2] = x;
+				r = c;
+				g = 0;
+				b = x;
 			}
 			double m = l - (c / 2);
-			rgb[0] = Math.round(((rgb[0]+m)*255));
-			rgb[1] = Math.round((int)((rgb[1]+m)*255));
-			rgb[2] = Math.round(((rgb[2]+m)*255));
-			
-			
-			System.out.println(c);
-			System.out.println(hp);
-			System.out.println(x);
-			System.out.println(m);
+			rgb[0] = (int)(Math.round(((r+m)*255)));
+			rgb[1] = (int)(Math.round(((g+m)*255)));
+			rgb[2] = (int)(Math.round(((b+m)*255)));	
 		}
-		
 		return rgb;
 	}
 
