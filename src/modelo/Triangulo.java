@@ -11,6 +11,6 @@ public class Triangulo extends Poligono{
 		generarAristas();
 	}
 	public String toString(){
-    	return "Triangulo"+""+"";
+    	return "Triangulo";
     }
 }

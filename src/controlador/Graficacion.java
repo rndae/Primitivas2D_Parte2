@@ -67,18 +67,20 @@ public class Graficacion{
 	@FXML private TextField tcorX, tcorY;
 	@FXML private Button btnTransformar;
 	
-	ObservableList<String> figsTexto;
-	HashMap<String,Grafico> figuras;
+	private ObservableList<String> figsTexto;
+	private HashMap<String,Grafico> figuras;
+	private int lins, circs, cuads, tris;
 		
 	public Graficacion(){
 		figsTexto = FXCollections.observableArrayList();
 		figuras = new HashMap<String, Grafico>();
-	}
+		lins = 0; circs = 0; cuads = 0; tris = 0;
+		}
 	
 	private void actualizar(Grafico fig, String claveAnte, int indice){
-		figsTexto.set(indice, fig.toString());
+		//figsTexto.set(indice, fig.toString());
 		repintar(lienzo.getGraphicsContext2D());
-		lista.setItems(figsTexto);
+		//lista.setItems(figsTexto);
 	}
 	
 	private void repintar(GraphicsContext gc){
@@ -106,9 +108,12 @@ public class Graficacion{
 				}
 				//pintarFigura(fig, lienzo.getGraphicsContext2D());
 				actualizar(fig, clave, indice);
-				System.out.println(clave);
-				System.out.println(fig.toString());
+				//System.out.println(clave);
+				//System.out.println(fig.toString());
 			}
+
+				System.out.println(clave);
+				//System.out.println(fig.toString());
 		}
 	}
 	
@@ -117,6 +122,7 @@ public class Graficacion{
 		figsTexto = FXCollections.observableArrayList();
 		figuras = new HashMap<String, Grafico>();
 		lista.setItems(figsTexto);
+		lins = 0; circs = 0; cuads = 0; tris = 0;
 		System.out.println("Borra. ");
 	}
 	
@@ -128,25 +134,34 @@ public class Graficacion{
 			pintarPoligono(new Triangulo(new Point(50, 5),new Point(50, 200), new Point(150, 100)), gc);		
 			pintarPoligono(new Cuadrado(new Point(150, 50),250), gc);
         */
+		String clave = "";
 		if(lp1.getText().length()>0 && lp1.getText().length()>0){
 			modelo.Line lin = pintarLinea(nuevaLinea(), gc);
-			figsTexto.add(lin.toString());
-			figuras.put(lin.toString(), lin);
+			clave = lin.toString()+lins;
+			figsTexto.add(clave);
+			figuras.put(clave, lin);
+			lins++;
 			}
 		if(centro.getText().length()>0 && radio.getText().length()>0){
-			Circumference cir = pintarCircunferencia(nuevaCircunferencia(), gc);
-			figsTexto.add(cir.toString());
-			figuras.put(cir.toString(), cir);
+			Circumference cir = pintarCircunferencia(nuevaCircunferencia(), gc);	
+			clave = cir.toString()+circs;
+			figsTexto.add(clave);
+			figuras.put(clave, cir);
+			circs++;
 		}
 		if(tp1.getText().length()>0 && tp2.getText().length()>0 && tp3.getText().length()>0){
-			Poligono poli = pintarPoligono(nuevoTriangulo(), gc);			
-			figsTexto.add(poli.toString());
-			figuras.put(poli.toString(),poli);
+			Poligono poli = pintarPoligono(nuevoTriangulo(), gc);	
+			clave = poli.toString()+tris;
+			figsTexto.add(clave);
+			figuras.put(clave,poli);
+			tris++;
 		}
 		if(cp.getText().length()>0 && largo.getText().length()>0){
 			Poligono poli = pintarPoligono(nuevoCuadrado(), gc);
-			figsTexto.add(poli.toString());
-			figuras.put(poli.toString(), poli);
+			clave = poli.toString()+cuads;
+			figsTexto.add(clave);
+			figuras.put(clave, poli);
+			cuads++;
 		}
 		System.out.print("Dibuja. ");		
 		lista.setItems(figsTexto);

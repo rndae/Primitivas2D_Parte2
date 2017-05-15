@@ -28,7 +28,7 @@ public class Line extends Primitive2D{
 	}
 	
 	public String toString(){
-		return "Linea ("+p1.x+","+p1.y+")-("+p2.x+","+p2.y+")";
+		return "Linea";
 	}
 	
 	public void setPoints(Point a, Point b){
@@ -247,8 +247,7 @@ public class Line extends Primitive2D{
 	@Override
 	public void escalar(double s) {
 		p2.x = (int)(p2.x*s);
-		p2.y = (int)(p2.y*s);
-		
+		p2.y = (int)(p2.y*s);		
 	}
 
 	@Override
