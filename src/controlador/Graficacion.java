@@ -11,6 +11,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -36,6 +38,14 @@ import modelo.Triangulo;
 import modelo.Grafico;
 
 public class Graficacion{  
+	
+	private Point p1 = null;
+	private Point p2 = null;	
+	boolean click1 = false;
+	boolean click2 = false;
+	EventHandler e1= null;
+	
+	
 	@FXML private AnchorPane controles;
 	@FXML private AnchorPane inicio;
 	
@@ -305,6 +315,70 @@ public class Graficacion{
 		int lon = Integer.parseInt(largo.getText());		
 		return new Cuadrado(new Point(Integer.parseInt(a[0]),Integer.parseInt(a[1])), lon);
 	}	
+	
+	@FXML private void btnsegmento(ActionEvent event){
+		if(!click1)
+			 e1 = lienzo.getOnMouseClicked();
+		lienzo.setOnMouseClicked(new EventHandler<MouseEvent>() {
+						
+			@Override
+			public void handle(MouseEvent e) {
+				if(!click1){
+					p1 = new Point((int)e.getX(),(int)e.getY());
+					click1 = true;
+				}else{
+					p2 = new Point((int)e.getX(),(int)e.getY());
+					Line lin =pintarLinea(new Line(p1, p2), lienzo.getGraphicsContext2D());				
+					String clave = lin.toString()+lins;
+					figsTexto.add(clave);
+					figuras.put(clave, lin);
+					lins++;
+					lista.setItems(figsTexto);
+					click1 = false;				
+					lienzo.setOnMouseClicked(e1);	
+				}		
+			}
+			
+		});
+		
+		}
+	
+		
+	@FXML 
+	private void btncirculo(ActionEvent event){
+		if(!click1)
+				 e1 = lienzo.getOnMouseClicked();
+			lienzo.setOnMouseClicked(new EventHandler<MouseEvent>() {
+							
+				@Override
+				public void handle(MouseEvent e) {
+					if(!click1){
+						p1 = new Point((int)e.getX(),(int)e.getY());
+						click1 = true;
+					}else{
+						p2 = new Point((int)e.getX(),(int)e.getY());
+						double dx = p2.x-p1.x;
+						double dy = p2.y-p1.y;
+						int radio = (int)(Math.sqrt(dx*dx+dy*dy));
+						Circumference cir= pintarCircunferencia(new Circumference(p1.x, p1.y, radio), lienzo.getGraphicsContext2D());
+						//registrar
+						String clave = cir.toString()+lins;
+						figsTexto.add(clave);
+						figuras.put(clave, cir);
+						lins++;
+						lista.setItems(figsTexto);
+						
+						click1 = false;				
+						lienzo.setOnMouseClicked(e1);	
+					}		
+				}
+				
+			});
+		
+		}
+	
+		
+}
 
 	
-}
+
